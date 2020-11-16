@@ -15,7 +15,7 @@ app.listen(3000, function () {
 });
 express()
   .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
+  .set('views', path.join(__dirname, 'html_template.html'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('html_template'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
