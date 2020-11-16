@@ -1,11 +1,11 @@
-const app = require("express")();
+const router = require("express");
+const app = express();
 const path = require('path');
-const PORT = 3000;
+const http = require('http');
+const PORT = process.env.port || 3000;
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname+"/html_template.html"));
+router.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname+'/html_template.html'));
 });
-
-app.listen(PORT, () => {
-    console.log(`Channel created at ${PORT}`);
-});
+app.use('/', router);
+app.listen(process.env.port || 3000);
