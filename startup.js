@@ -3,10 +3,12 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 const http = require('http');
-const PORT = process.env.port || 3000;
+const PORT = 3000;
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname+'/html_template.html'));
 });
 app.use('/', router);
-app.listen(process.env.port || 3000);
+app.listen(3000, function () {
+    console.log(`Example app listening on port ${PORT}!`);
+});
