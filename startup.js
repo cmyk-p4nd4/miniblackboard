@@ -1,10 +1,11 @@
-const preq = require("express")();
-const PORT = process.env.PORT || 3000;
+const app = require("express")();
+const path = require('path');
+const PORT = 3000;
 
-preq.get("", (req, res) => {
-    res.send("Ready!");
+app.use('/', (req, res) => {
+    res.sendFile(path.join(__dirname+"/html_template.html"));
 });
 
-preq.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Channel created at ${PORT}`);
 });
