@@ -45,7 +45,7 @@
         }
     </style>
     <!-- Custom styles for this template -->
-    <link href="sticky-footer.css" rel="stylesheet">
+    <link href="css_template.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
