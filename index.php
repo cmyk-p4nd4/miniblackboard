@@ -3,7 +3,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
 <head>
-    <title>Mini BlackBorad</title>
+    <title>Mini BlackBoard</title>
     <meta content="/images/branding/googleg/1x/googleg_standard_color_128dp.png" itemprop="image">
     <link href="https://fonts.googleapis.com/css2?family=Muli:ital,wght@1,585&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
