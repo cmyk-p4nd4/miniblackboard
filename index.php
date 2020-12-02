@@ -5,17 +5,14 @@
 <head>
     <title>Mini BlackBoard</title>
     <meta content="/images/branding/googleg/1x/googleg_standard_color_128dp.png" itemprop="image">
-    <link href="https://fonts.googleapis.com/css2?family=Muli:ital,wght@1,585&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sticky-footer/">
-
-    <!-- Bootstrap core CSS -->
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style type="text/css">
         @font-face {
             font-family: 'Metropolis';
@@ -44,31 +41,88 @@
             }
         }
     </style>
-    <!-- Custom styles for this template -->
-    <link href="css_template.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="modal-css.css" rel="stylesheet">
 </head>
 
-<body class="d-flex flex-column h-100">
+<body class="bg-white text-dark">
     <!-- Begin page content -->
-    <main role="main" class="flex-shrink-0">
-        <div class="container">
-            <popup id="popup">
-                <center>
-                    <h2 style="font-family: 'Metropolis', sans-serif;">
-                        <font size="+3">
-                            UNDER CONSTRUCTION
-                        </font>
-                    </h2>
-                    <p style="font-family: 'Inter', sans-serif;">
-                        Please Come Back Soon!
-                        <br><br><br><br><br><br><br><br>
-                        <font style="font-family: 'Montserrat', sans-serif;" size="-2">2020 &copy; <b>Felix Tsoy &amp; Jimmy Cheung</b></font>
-                </center>
-                </p>
-                </center>
-            </popup>
-    </main>
-
+    <div id="login" style="height: 100%">
+        <div class="d-flex align-items-center flex-column">
+            <img class="" style="width:200px" src="assets/minibb.png" alt="MiniBB Logo">
+            <p><strong>Welcome to MiniBlackboard</strong></p>
+            <p>Please Sign-in to Continue</p>
+            <a href="#modal-login" role="button" class="btn btn-primary btn-lg" data-toggle="modal">Sign In</a>
+        </div>
+        <div id="modal-login" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Sign In</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" class="form-control" name="uuid" placeholder="UserID" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                    <input type="text" class="form-control" name="password" placeholder="Passcode" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">Sign In</button>
+                            </div>
+                            <p><a href="#">Forgot Password?</a></p>
+                        </form>
+                    </div>
+                    <div class="modal-footer">Don't have an account? <a href="#modal-register" role="button" data-dismiss="modal" data-toggle="modal">Create one</a></div>
+                </div>
+            </div>
+        </div>
+        <div id="modal-register" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Register</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="reg-uid" placeholder="UserID" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="reg-password" placeholder="Password" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="reg-alias" placeholder="Nickname" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="reg-email" placeholder="Email" required="required">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-3">
+                                    <input type="text" class="form-control" name="reg-gender" placeholder="Gender" required="required">
+                                </div>                            
+                                <div class="form-group col">
+                                    <input type="date" class="form-control" name="reg-birthday" placeholder="Birthday" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
