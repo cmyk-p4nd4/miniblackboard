@@ -1,0 +1,56 @@
+.container [class$="-form"] {
+    padding: 5%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.container [class$="-form"] h4 {
+	color: #303030;
+	text-align: center;
+	font-size: 26px;
+    margin-top: 0;
+}
+.container .register-form {
+    background: #0062cc;
+}
+.container form {
+    padding: 10%;
+    
+}
+.container .register-form h4 {
+    color: #fff;
+}
+.container [class$="-form"] .clicker {
+    min-width: 160px;
+    width: 40%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+.login-form .clicker, .login-form .clicker:active{
+    font-weight: 600;
+    color: #fff;
+    background-color: #0062cc;
+}
+.register-form .clicker, .register-form .clicker:active{
+    font-weight: 600;
+    color: #0062cc;
+    background-color: #fff;
+}
+.container .form-control {
+	min-height: 38px;
+	padding-left: 5px;
+	box-shadow: none !important;
+	border-width: 0 0 1px 0;
+	border-radius: 2px;
+}
+.container .input-group-icon {
+	max-width: 42px;
+	text-align: center;
+	background: none;
+	border-bottom: 1px solid #ced4da;
+	padding-right: 5px;
+	border-radius: 0;
+}
+.container .form-control:focus {
+	border-color: #ccc;
+}

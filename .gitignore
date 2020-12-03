@@ -2,4 +2,7 @@
 .vscode
 /vendor/
 composer
+jQuery-login.js
 .env
+temp.php
+modal-css.css

@@ -57,7 +57,7 @@ span.help-tooltip {
 }
 .modal-login .input-group-addon {
 	max-width: 42px;
-	text-align: center;
+	text-align: justify;
 	background: none;
 	border-bottom: 1px solid #ced4da;
 	padding-right: 5px;
