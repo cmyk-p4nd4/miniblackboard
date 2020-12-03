@@ -13,7 +13,6 @@
 }
 .container form {
     padding: 10%;
-    
 }
 .container .register-form h4 {
     color: #fff;
@@ -53,4 +52,8 @@
 }
 .container .form-control:focus {
 	border-color: #ccc;
+}
+.container .help-block {
+    color: red;
+    font-size: medium;
 }
