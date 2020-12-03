@@ -1,5 +1,12 @@
+span.help-tooltip {
+	color: red;
+	font-size: small;
+}
 .modal-login {
 	width: 350px;
+}
+.modal-register {
+	width: 420px;
 }
 .modal-login .modal-content {
 	padding: 20px;
