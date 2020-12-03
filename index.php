@@ -1,5 +1,5 @@
 <?php
-    require_once "admin_module.php";
+    require_once "admin_module/connection.php";
     
 ?>
 
