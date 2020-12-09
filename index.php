@@ -11,12 +11,12 @@
         if (isset($_POST["uuid"]) && isset($_POST["password"])) {
             $userID = trim($_POST["uuid"]);
             $password = trim($_POST["password"]);
-            if ($stmt = $conn->prepare("select userid,alias, password from permission where userid = ?")) {
-                $stmt->bind_param("i", $userID);
+            if ($stmt = $conn->prepare("select userid,alias,password,permission from permission where userid = ?")) {
+                $stmt->bind_param("i", $userID);                
                 if ($stmt->execute()) {
                     $stmt->store_result();
                     if ($stmt->num_rows == 1) { // check if account exists
-                        $stmt->bind_result($id,$alias,$hashed_password);
+                        $stmt->bind_result($id,$alias,$hashed_password, $permission);
                         $stmt->fetch();
                         if (password_verify($password, $hashed_password)) {
                             session_start(); //create new session for user
@@ -24,7 +24,8 @@
                             $_SESSION["loggedin"] = true;
                             $_SESSION["userid"] = $id;
                             $_SESSION["alias"] = $alias;
-                            $_SESSION["ARM_GPIO"] = 0x32f7;
+                            $_SESSION["permission"] = $permission;
+                            if ($permission == "A") $_SESSION["ARM_GPIO"] = 0x32f7;
                            
                             header("location: wrap/mainhub.php");
                         } else {
