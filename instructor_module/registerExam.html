@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register an exam</title>
+	<link rel="stylesheet" type="text/css" href="registerExam.css"/>
+	<script src="registerExam.js"></script>
+</head>
+
+<body onload="initElements();">
+	<h1 align="center">Register an exam</h1>
+	<form action="registerExam.php" method="post" id="registerForm">
+	<p>Please enter the following information:</p>
+	<p>Name of the exam: <input type="text" id="examName" name="examName"/></p>
+	<p>Start date of the exam: <input type="date" id="examDate" name="examDate"/></p>
+	<p>Start time of the exam: 
+		<input type="time" id="examTime" name="examTime"/>
+	</p>
+	<p>Duration of the exam:
+		<select id="examDurationHrs" name="examDurationHrs">
+		</select>
+		<select id="examDurationMinutes" name="examDurationMinutes">
+		</select>
+	</p>
+	<p><button type="button" onclick="check();">Next</button></p>
+	</form>
+</body>
+
+
+</html>
