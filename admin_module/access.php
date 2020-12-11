@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if(!isset($_SESSION['loggedin'])) {
+    if(!isset($_COOKIE['loggedin'])) {
         //Send 403 Forbidden response.
         header($_SERVER["SERVER_PROTOCOL"] . " 403 Forbidden");
         session_unset();
@@ -8,18 +8,11 @@
         exit;
     }
     require "../admin_module/connection.php";
-    $username = "";
     $userid = -1;
     $welcomeMsg = "";
-    if ($stmt = $conn->prepare("select userid,alias from permission where userid = ?")) {
-        $stmt->bind_param("i", $_SESSION["userid"]);
-        $stmt->execute();
-        $stmt->store_result();
-        $stmt->bind_result($userid, $username);
-        $stmt->fetch();
-        if (empty($result)) 
-            $welcomeMsg = "User ".$userid;
-        else 
-            $welcomeMsg = $username;
+    if (empty($_COOKIE["alias"])) {
+        $welcomeMsg = "User ".$_COOKIE["userid"];
+    } else {
+        $welcomeMsg = $_COOKIE['alias'];
     }
 ?>
