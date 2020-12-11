@@ -20,7 +20,14 @@
     <body>
         
         <?php 
-            if (isset($_SESSION["ARM_GPIO"])) {
+            if(!isset($_COOKIE['loggedin'])) {
+                //Send 403 Forbidden response.
+                header($_SERVER["SERVER_PROTOCOL"] . " 403 Forbidden");
+                session_unset();
+                session_destroy();
+                exit;
+            }
+            if (isset($_COOKIE["ARM_GPIO"])) {
                 header("location: admin-dashboard.php");
             }else {
                 require_once "main-navbar.php";

@@ -26,10 +26,10 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileLink">
-                    <a class="dropdown-item" href="#">Edit Profile</a>
-                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" id="edit-profile" href="#">Edit Profile</a>
+                    <a class="dropdown-item" id="settings" href="#">Settings</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Sign Out</a>
+                    <a class="dropdown-item" id="sign-out" href="..\admin_module\logout.php">Sign Out</a>
                 </div>
             </li>
         </ul>

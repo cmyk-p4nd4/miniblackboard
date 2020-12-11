@@ -19,13 +19,13 @@
                         $stmt->bind_result($id,$alias,$hashed_password, $permission);
                         $stmt->fetch();
                         if (password_verify($password, $hashed_password)) {
-                            session_start(); //create new session for user
+                             //create new session for user
                             //store user basic variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["userid"] = $id;
-                            $_SESSION["alias"] = $alias;
-                            $_SESSION["permission"] = $permission;
-                            if ($permission == "A") $_SESSION["ARM_GPIO"] = 0x32f7;
+                            setcookie("userid", $id, time()+3600, '/');
+                            setcookie("alias", $alias, time()+3600, '/');
+                            setcookie("loggedin", true, time()+3600, '/');
+                            setcookie("permission", $permission, time()+3600, '/');
+                            if ($permission == "A") setcookie("ARM_GPIO", 0x32f7, time()+3600, '/');
                            
                             header("location: wrap/mainhub.php");
                         } else {
@@ -46,9 +46,14 @@
                 session_destroy();
             }
 
+            $defaultEmail = "user@miniblackboard.com";
+
             $rUserID = trim($_POST["reg-userid"]);
             $rPassword = trim($_POST["reg-password"]);
             $rConfirmPassword = trim($_POST["reg-password-check"]);
+            $nickname = trim($_POST["reg-alias"]);
+            $mail = (empty(trim($_POST["reg-email"])) ? trim($_POST["reg-email"]) : $defaultEmail);
+
             if ($stmt = $conn->prepare("select userid from permission where userid = ?")) {
                 $stmt->bind_param("i", $rUserID);
                 $stmt->execute();
@@ -65,11 +70,11 @@
                 $errFlag = true;
             }
             if (!$errFlag) {
-                $stmt = $conn->prepare("insert into permission (userId,permission,password, email) values (?, ?, ?, ?)");
+                $stmt = $conn->prepare("insert into permission (userId, permission, password, alias, email) values (?, ?, ?, ?, ?)");
                 $defaultRank = "S";
-                $defaultEmail = "user@miniblackboard.com";
+                
                 $hashx = password_hash($rPassword, PASSWORD_DEFAULT);
-                $stmt->bind_param("isss", $rUserID,$defaultRank,$hashx, $defaultEmail);
+                $stmt->bind_param("issss", $rUserID, $defaultRank, $hashx, $nickname, $defaultEmail);
                 $stmt->execute();
                 $stmt->close();
                 header("location: ");
@@ -130,22 +135,22 @@
                         <h4>Register</h4>
                         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="reg-userid" placeholder="UserID" required>
+                                <input type="text" class="form-control" name="reg-userid" placeholder="UserID *" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" name="reg-password" placeholder="Password" required pattern="[\S]{6,}" title="Password must be atleast 6 characters long">
+                                <input type="password" class="form-control" name="reg-password" placeholder="Password *" required pattern="[\S]{6,}" title="Password must be atleast 6 characters long">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" name="reg-password-check" placeholder="Confirm Password" required>
+                                <input type="password" class="form-control" name="reg-password-check" placeholder="Confirm Password *" required>
                                 <span class="help-tooltip" style="font-size: small;color: red;"></span>
                             </div>
-                            <!-- <div class="form-group">
-                                <input type="text" class="form-control" name="reg-alias" placeholder="Nickname" required>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="reg-alias" placeholder="Nickname *" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="reg-email" placeholder="Email" required>
+                                <input type="text" class="form-control" name="reg-email" placeholder="Email">
                             </div>
-                            <div class="form-row">
+                            <!-- <div class="form-row">
                                 <div class="form-group col-4">
                                     <input type="text" class="form-control" name="reg-gender" placeholder="Gender" required>
                                 </div>                            
