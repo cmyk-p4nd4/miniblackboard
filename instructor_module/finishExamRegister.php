@@ -85,6 +85,7 @@
             }
             else
                 print "The exam ".$existingRecordNumber." has been uploaded successfully.<br>";
+            mysqli_close($connect);
         }
     ?>
     </p>
