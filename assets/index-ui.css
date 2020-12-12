@@ -11,10 +11,13 @@
 .container .register-form {
     background: #0062cc;
 }
+.container .reset-password-form {
+    background: #b89229;
+}
 .container form {
     padding: 10%;
 }
-.container .register-form h4 {
+.container .register-form h4, .contrainer .reset-password-form h4{
     color: #fff;
 }
 .container [class$="-form"] .clicker {
@@ -33,6 +36,13 @@
 .register-form .clicker, .register-form .clicker:active{
     font-weight: 600;
     color: #0062cc;
+    background-color: #fff;
+}
+.reset-password-form .clicker, .reset-password-form .clicker:active {
+    min-width: 100px !important;
+    width: 90% !important;
+    font-weight: 600;
+    color: #b89229;
     background-color: #fff;
 }
 .container .form-control {
@@ -56,4 +66,9 @@
 .container .help-block {
     color: red;
     font-size: medium;
+}
+
+.big-error {
+    border: 2px solid red;
+    background-color: #ff8080;
 }

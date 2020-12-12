@@ -4,6 +4,7 @@
     $rUserID = $rPassword = $rConfirmPassword = "";
     $userID = $password = "";
     $login_errMsg = $register_errMsg = "";
+    $forgot_errMsg = "";
     $errFlag = false;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -39,7 +40,7 @@
                 }
             }
             $stmt->close();
-        } else {
+        } else if (isset($_POST["reg-userid"])) {
             //otherwise switch to registration handler
             if (session_status() != PHP_SESSION_NONE) { //NULL Session handler
                 session_unset();
@@ -81,6 +82,26 @@
             } else {
                 header("location: ");
             }
+        } else if (isset($_POST["f-userid"])) {
+            $rid = trim($_POST["f-userid"]);
+            $rpw = trim($_POST["f-password"]);
+            $stmt = $conn->prepare("select userid, password from permission where userid = ?");
+            $stmt->bind_param("i", $rid);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows == 1) {
+                $stmt->close();
+                $ehash = password_hash($rpw, PASSWORD_DEFAULT);
+                $stmt = $conn->prepare("update permission set `password` = ? where userid = ?");
+                $stmt->bind_param("si", $ehash, $rid);
+                $stmt->execute();
+                $forgot_errMsg = "";
+                $login_errMsg = "Password Resetted!";
+            } else {
+                $forgot_errMsg = "User account does not exists";
+            }
+            $stmt->close();
+            header("location: ");
         }
     }
     $conn->close();
@@ -96,7 +117,6 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <!-- Custom Style-->
         <link href="assets/index-ui.css" rel="stylesheet">
@@ -127,6 +147,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="clicker" value="Sign In"/>
+                                <small class="text-primary float-right" data-toggle="collapse" href="#div-forget-password" style="cursor: pointer;">Forget Password?</small>
                             </div>
                             <span class="help-block"><?php echo $login_errMsg; ?></span>
                         </form>
@@ -160,14 +181,69 @@
                                     title="Enter a date in this format YYYY/MM/DD">
                                 </div> 
                             </div> -->
-                            <div class="form-group">
+                            <div class="form-group" >
                                 <input type="submit" class="clicker" value="Create Account"/>
                             </div>
                             <span class="help-block"><?php echo $register_errMsg;?></span>
                         </form>
                     </div>
                 </div>
+                <div class="collapse row justify-content-md-center" id="div-forget-password">
+                    <div class="reset-password-form">
+                        <h4>Reset Password</h4>
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="f-userid" placeholder="User ID *" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="f-password" placeholder="Password *" required pattern="[\S]{6,}">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="f-pwcheck" placeholder="Confirm Password *" title="Password Mismatch" required>
+                            </div>
+                            <div class="form-group" >
+                                <input type="submit" class="clicker" value="Reset Password" id="submit-reset-password"/><br>
+                                <label class="help-block" id="small-error"><?php echo $forgot_errMsg;?></label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
+    <script type="text/javascript">
+    $(function(){
+        $(".reset-password-form").ready(function() {
+            var flag = false;
+            $("input[name='f-pwcheck']").on("keyup", function(){
+                //console.log($("input[name='f-password']").val() == $(this).val());
+                if ($("input[name='f-password']").val() != $(this).val()) {
+                    $(this).addClass("big-error");
+                    flag = false;
+                } else {
+                    $(this).removeClass("big-error");
+                    flag = true;
+                }
+            });
+
+            // var form = $(this);
+            // $("#submit-reset-password").on("click", function() {
+            //     var arr = [];
+            //     form.find("input[name*='f-']").each(function() {
+            //         arr.push($(this).val());
+            //     });
+            //     console.log(arr.slice(0,-1));
+            //     if (flag) {
+            //         $.post("<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>", {
+            //             data: arr.slice(0,-1),
+            //             resetu: '1'
+            //         }, function () {
+            //             location.reload();
+            //         });
+                    
+            //     }
+            // });
+        });
+    });
+    </script>
 </html>
