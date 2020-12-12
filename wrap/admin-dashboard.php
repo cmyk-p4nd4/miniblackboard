@@ -259,11 +259,39 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                             </form>
                         </div>
                     </div>
+                    <div class="card">
+                        <h5 class="card-header">Remove User from Course</h5>
+                        <div class="card-body">
+                            <form id="removestd">
+                                <div class="form-row">
+                                    <div class="col-auto">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect41">Select Subject</label>
+                                            </div>
+                                            <select class="form-control r-subDropdown" id="inputGroupSelect41" name="removeuser-1" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row"> 
+                                    <div class="col-auto">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect42">Select Student</label>
+                                            </div>
+                                            <select class="form-control custom-select r-stdDropdown" id="inputGroupSelect42" name="removeuser-2" size="4"  multiple></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-auto">
+                                        <input type="button" class="form-control" value="Submit" id="removestdForm">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <!-- <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                </div>
-                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                </div> -->
             </div>
         </div>
     </div>
@@ -279,7 +307,7 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
         });
         $("#appendstd").ready(function() {
             $.post("../admin_module/admin-dashboard-populate.php", {
-                    func2:'1'
+                func2:'1'
             }, function(data) {
                 $(".subDropdown").html(data);
             });
@@ -287,6 +315,35 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                 func3:'1'
             }, function(data) {
                 $(".stdDropdown").html(data);
+            });
+        });
+        $("#modifyuser").ready(function() {
+            $.post("../admin_module/admin-dashboard-populate.php", {
+                    func2:'1'
+            }, function(data) {
+                $(".r-subDropdown").html(data);
+            });
+            
+        });
+        $(".r-subDropdown").change(function() {
+            $.post("../admin_module/admin-dashboard-populate.php", {
+                courseid: $(this).val(),
+                func4: '1'
+            }, function(data) {
+                $(".r-stdDropdown").html("");
+                $(".r-stdDropdown").html(data);
+            });
+        });
+        $("#removestdForm").click(function() {
+            var term =[];
+            $("[name*='removeuser']").each(function() {
+                term.push($(this).val());
+            });
+            $.post("../admin_module/admin-dashboard-populate.php", {
+                datas: term,
+                func5: '1'
+            }).done(function() {
+                location.reload();
             });
         });
         $("#courseForm").on('click', function(e) {
@@ -325,6 +382,7 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
             $("select[name*='appenduser']").each(function() {
                 arr.push($(this).val());
             });
+            json_encode()
             $.post("../admin_module/admin-dashboard-populate.php", {
                 subject: arr[0],
                 students: arr[1],
@@ -333,7 +391,7 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                 location.reload();
             });
         });
-        $("#user-list i.fa").slice(0, $("#user-list i.fa").length / 2).on("click", function() {
+        $("#user-list i.fa").on("click", function() {
             var target = $(this).closest("tr");
             target.css({
                 "border": "2px solid red"
@@ -358,7 +416,7 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                 }
             }, 0);
         });
-        $("#course-list i.fa").slice(0, $("#course-list i.fa").length / 2).on("click", function() {
+        $("#course-list i.fa").on("click", function() {
             var target = $(this).closest("tr");
             target.css({
                 "border": "2px solid red"
