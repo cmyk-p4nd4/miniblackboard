@@ -663,12 +663,12 @@ function onFinishClick()
 	{
 		if (checkQuestionValid())
 		{
+			//JSON.stringify([question,questionType,answers,correctAnswer])
 			var jsonSubmitText = JSON.stringify([question,questionType,answers,correctAnswer]);
 			var questionCount = question.length;
 			document.getElementById("questionCnt").value = questionCount;
 			document.getElementById("questionAnswers").value = jsonSubmitText;
 			
-
 			//since the input of questions are finished, erase the input form
 			var questionTable = document.getElementById("questionTable");
 			if (typeof(questionTable) != "undefined")
@@ -682,4 +682,5 @@ function onFinishClick()
 		}
 	}
 }
+
 

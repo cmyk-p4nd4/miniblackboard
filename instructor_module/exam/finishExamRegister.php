@@ -62,7 +62,7 @@
         if (!$result)
         {
             printReturnForm();
-            die("Error occurred when processing the exam id, reason: ".mysqli_connect_errno());
+            die("Error occurred when processing the exam id, reason: ".mysqli_error($connect));
         }
 
         //assign a exam id.
@@ -112,9 +112,9 @@
         if (!$queryResult)
         {
             printReturnForm();
-            die("Cannot update the course content, reason: ".mysqli_connect_errno());
+            die("Cannot update the course content, reason: ".mysqli_error($connect));
         }
-
+//FOCUS
         $contentID = $courseID."00000";
         while ($row = mysqli_fetch_assoc($queryResult))
         {
@@ -122,14 +122,14 @@
             if ($contentID < $row['contentid'])
                 $contentID = $row['contentid'];
         }
-
+//FOCUS
         $contentID++;
         $queryCmd = "INSERT INTO course_contents (`courseid`,`contentid`,`type`) VALUES ('".$courseID."','".$contentID."','Exam');";
         $queryResult = mysqli_query($connect,$queryCmd);
         if (!$queryResult)
         {
             printReturnForm();
-            die("Cannot update the course content to the db, reason: ".mysqli_connect_errno());
+            die("Cannot update the course content to the db, reason: ".mysqli_error($connect));
         } else
         {
             print "The exam has been uploaded successfully.<br>";
