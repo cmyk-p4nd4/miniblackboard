@@ -13,6 +13,15 @@
     if (isset($_POST["removec"])) {
         removeCourse();
     }
+    if (isset($_POST["func1"])) {
+        func1();
+    }
+    if (isset($_POST["func2"])) {
+        func2();
+    }
+    if (isset($_POST["func3"])) {
+        func3();
+    }
 
     function createCourse() {
         global $conn;
@@ -68,5 +77,42 @@
         $stmt->close();
         $conn->close();
         echo "<meta http-equiv='refresh' content='0'>";
+    }
+    function func1()
+    {
+        $conn = new mysqli(DB_HOST, DB_USER, DB_TOKEN, DB_TARGET);
+        $stmt = $conn->prepare("select userid from permission where permission = 'T'");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        echo "<option value='0'></option>";
+        while ($row = $result->fetch_array()) {
+            echo "<option value='" . $row[0] . "'>" . $row[0] . "</option>";
+        }
+        $stmt->close();
+        $conn->close();
+    }
+    function func2() {
+        $conn = new mysqli(DB_HOST, DB_USER, DB_TOKEN, DB_TARGET);
+        $stmt = $conn->prepare("select courseid,course_prefix, coursename from courses");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        //echo "<option value='0'></option>";
+        while ($row = $result->fetch_array()) {
+            echo "<option value='" . $row[0] . "'>" . $row[1].': '. $row[2] . "</option>";
+        }
+        $stmt->close();
+        $conn->close(); 
+    }
+    function func3() {
+        $conn = new mysqli(DB_HOST, DB_USER, DB_TOKEN, DB_TARGET);
+        $stmt = $conn->prepare("select userid from permission where permission = 'S'");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        //echo "<option value='0'></option>";
+        while ($row = $result->fetch_array()) {
+            echo "<option value='" . $row[0] . "'>" . $row[0] . "</option>";
+        }
+        $stmt->close();
+        $conn->close(); 
     }
 ?>

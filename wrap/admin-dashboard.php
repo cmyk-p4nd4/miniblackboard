@@ -29,8 +29,6 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link" id="v-pills-general-tab" data-toggle="pill" href="#v-pills-general" role="tab" aria-controls="v-pills-general" aria-selected="true">General</a>
                 <a class="nav-link" id="v-pills-modify-tab" data-toggle="pill" href="#v-pills-modify" role="tab" aria-controls="v-pills-modify" aria-selected="false">Modify</a>
-                <!-- <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a> -->
                 <a class="nav-link" href="..\admin_module\logout.php">Logout</a>
             </div>
         </div>
@@ -232,15 +230,30 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                     <div class="card">
                         <h5 class="card-header">Add User to Course</h5>
                         <div class="card-body">
-                            <form>
+                            <form id="appendstd">
                                 <div class="form-row">
-                                    <div class="col">
-                                        <div class="input-group-prepend">
-                                            <label class="input-group-text" for="inputGroupSelect31">Select Subject</label>
+                                    <div class="col-auto">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect31">Select Subject</label>
+                                            </div>
+                                            <select class="form-control subDropdown" id="inputGroupSelect31" name="appenduser-1" required></select>
                                         </div>
-                                        <select class="form-control" id="inputGroupSelect31" name="appenduser-1" required>
-                                            
-                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row"> 
+                                    <div class="col-auto">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect32">Select Student</label>
+                                            </div>
+                                            <select class="form-control custom-select stdDropdown" id="inputGroupSelect32" name="appenduser-2" size="4"  multiple></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-auto">
+                                        <input type="button" class="form-control" value="Submit">
                                     </div>
                                 </div>
                             </form>
@@ -255,33 +268,25 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
         </div>
     </div>
 </body>
-<?php
-    require_once "../admin_module/connection.php";
-    function func1()
-    {
-        $conn = new mysqli(DB_HOST, DB_USER, DB_TOKEN, DB_TARGET);
-        $stmt = $conn->prepare("select userid from permission where permission = 'T'");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        echo "<option value='0'></option>";
-        while ($row = $result->fetch_array()) {
-            echo "<option value='" . $row[0] . "'>" . $row[0] . "</option>";
-        }
-        $stmt->close();
-        $conn->close();
-    }
-    if (isset($_POST["func1"])) {
-        func1();
-    }
-
-?>
 <script type="text/javascript">
     $(function() {
         $("#course").ready(function() {
-            $.post("<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>", {
+            $.post("../admin_module/admin-dashboard-populate.php", {
                 func1: '1'
             }, function(data) {
                 $(".tutDropdown").html(data);
+            });
+        });
+        $("#appendstd").ready(function() {
+            $.post("../admin_module/admin-dashboard-populate.php", {
+                    func2:'1'
+            }, function(data) {
+                $(".subDropdown").html(data);
+            });
+            $.post("../admin_module/admin-dashboard-populate.php", {
+                func3:'1'
+            }, function(data) {
+                $(".stdDropdown").html(data);
             });
         });
         $("#courseForm").on('click', function(e) {
@@ -301,10 +306,10 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
         });
         $("#userForm").on('click', function(e) {
             var arr = [];
-            var reg_id = $("input[name='createuser-1']").get(1).value,
-                reg_pw = $("input[name='createuser-2']").get(1).value,
-                reg_perm = $("[name='createuser-3']").get(1).value,
-                reg_name = $("input[name='createuser-4']").get(1).value;
+            var reg_id = $("input[name='createuser-1']").val(),
+                reg_pw = $("input[name='createuser-2']").val(),
+                reg_perm = $("[name='createuser-3']").val(),
+                reg_name = $("input[name='createuser-4']").val();
             console.log(reg_id, reg_pw, reg_perm, reg_name);
             $.post("../admin_module/admin-dashboard-populate.php", {
                 uid: reg_id,
