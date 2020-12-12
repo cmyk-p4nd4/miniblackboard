@@ -22,6 +22,15 @@
     if (isset($_POST["func3"])) {
         func3();
     }
+    if (isset($_POST["func4"])) {
+        func4();
+    }
+    if (isset($_POST["func5"])) {
+        func5();
+    }
+    if (isset($_POST["func6"])) {
+        func6();
+    }
     if (isset($_POST["appendstd"])){
         appendStudent();
     }
@@ -81,6 +90,7 @@
         $conn->close();
         echo "<meta http-equiv='refresh' content='0'>";
     }
+
     function func1()
     {
         $conn = new mysqli(DB_HOST, DB_USER, DB_TOKEN, DB_TARGET);
@@ -94,6 +104,7 @@
         $stmt->close();
         $conn->close();
     }
+
     function func2() {
         $conn = new mysqli(DB_HOST, DB_USER, DB_TOKEN, DB_TARGET);
         $stmt = $conn->prepare("select courseid,course_prefix, coursename from courses");
@@ -106,6 +117,7 @@
         $stmt->close();
         $conn->close(); 
     }
+
     function func3() {
         $conn = new mysqli(DB_HOST, DB_USER, DB_TOKEN, DB_TARGET);
         $stmt = $conn->prepare("select userid from permission where permission = 'S'");
@@ -118,6 +130,37 @@
         $stmt->close();
         $conn->close(); 
     }
+
+    function func4() {
+        $conn = new mysqli(DB_HOST, DB_USER, DB_TOKEN, DB_TARGET);
+        $courseid = $_POST["courseid"];
+        $stmt = $conn->prepare("select studentid from student_course where courseid = ?");
+        $stmt->bind_param("i", $courseid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        echo "<option value='0'></option>";
+        while ($row = $result->fetch_array()) {
+            echo "<option value='" . $row[0] . "'>" . $row[0] . "</option>";
+        }
+        $stmt->close();
+        $conn->close(); 
+    }
+
+    function func5() {
+        $conn = new mysqli(DB_HOST, DB_USER, DB_TOKEN, DB_TARGET);
+        $subject = $_POST["datas"][0];
+        $student = $_POST["datas"][1];
+        $stmt = $conn->prepare("DELETE from student_course where courseid = ? AND studentid = ?");
+        $stmt->bind_param("ii", $subject, $student);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
+    }
+
+    function func6() {
+
+    }
+
     function appendStudent() {
         $subject = trim($_POST["subject"]);
         $students= $_POST["students"];
