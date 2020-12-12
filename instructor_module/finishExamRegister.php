@@ -11,6 +11,7 @@
     <p>
     <?php
         session_start();
+        //$dummy_course_id = 12345; // retrieve the course id
         print("You are submitting an exam with the following information<br>");
         print "Current exam information<br><br>";
 	    print "Name of exam: ". $_SESSION["examName"]."<br>";
