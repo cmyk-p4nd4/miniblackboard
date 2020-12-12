@@ -62,7 +62,6 @@
     $query = "SELECT course_contents.courseid, course_contents.contentid, course_contents.type, exams.exam_name
               FROM course_contents, exams
               WHERE course_contents.courseid = '".$courseid."' AND course_contents.contentid = exams.examid;";
-    print $query."<br>";
     $result = mysqli_query($connect,$query);
 
     if (!$result)
@@ -83,10 +82,10 @@
     else
     {
         $countContents = 0;
+        print "<p>".mysqli_num_rows($result)." content(s) found.</p>";
         while ($row = mysqli_fetch_assoc($result))
         {
             //output course contents one by one
-            print "<p>".mysqli_num_rows($result)." content(s) found.</p>";
             if ($row['courseid'] == $courseid)
             {
                 $divID = $row['type'].$row['contentid'];
@@ -110,7 +109,7 @@
         printReturnForm();
             
     }
-    
+    mysqli_close($connect);
     ?>
 </body>
 </html>
