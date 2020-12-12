@@ -22,7 +22,10 @@
     if (isset($_POST["func3"])) {
         func3();
     }
-
+    if (isset($_POST["appendstd"])){
+        appendStudent();
+    }
+    
     function createCourse() {
         global $conn;
         $prefix = trim($_POST["prefix"]);
@@ -114,5 +117,18 @@
         }
         $stmt->close();
         $conn->close(); 
+    }
+    function appendStudent() {
+        $subject = trim($_POST["subject"]);
+        $students= $_POST["students"];
+
+        $query = array();
+        foreach ($students as $student) {
+            $query[] = '("'.$student.'", '.$subject.')';
+        }
+
+        $conn = new mysqli(DB_HOST, DB_USER, DB_TOKEN, DB_TARGET);
+        $conn->query("insert into student_course (studentid, courseid) values " .implode(',', $query));
+        $conn->close();
     }
 ?>

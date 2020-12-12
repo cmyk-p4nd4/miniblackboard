@@ -253,7 +253,7 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                                 </div>
                                 <div class="form-row">
                                     <div class="col-auto">
-                                        <input type="button" class="form-control" value="Submit">
+                                        <input type="button" class="form-control" value="Submit" id="appendstdForm">
                                     </div>
                                 </div>
                             </form>
@@ -305,11 +305,10 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
             });
         });
         $("#userForm").on('click', function(e) {
-            var arr = [];
             var reg_id = $("input[name='createuser-1']").val(),
-                reg_pw = $("input[name='createuser-2']").val(),
-                reg_perm = $("[name='createuser-3']").val(),
-                reg_name = $("input[name='createuser-4']").val();
+            reg_pw = $("input[name='createuser-2']").val(),
+            reg_perm = $("[name='createuser-3']").val(),
+            reg_name = $("input[name='createuser-4']").val();
             console.log(reg_id, reg_pw, reg_perm, reg_name);
             $.post("../admin_module/admin-dashboard-populate.php", {
                 uid: reg_id,
@@ -317,6 +316,19 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                 perm: reg_perm,
                 name: reg_name,
                 addu: '1'
+            }).done(function() {
+                location.reload();
+            });
+        });
+        $("#appendstdForm").on("click", function() {
+            var arr = [];
+            $("select[name*='appenduser']").each(function() {
+                arr.push($(this).val());
+            });
+            $.post("../admin_module/admin-dashboard-populate.php", {
+                subject: arr[0],
+                students: arr[1],
+                appendstd:'1'
             }).done(function() {
                 location.reload();
             });
