@@ -1,8 +1,7 @@
 <?php
 
 if (!isset($_COOKIE["ARM_GPIO"])) {
-    header($_SERVER["SERVER_PROTOCOL"] . " 403 Forbidden");
-
+    header("location: /miniblackboard/wrap/trying-to-outsmart-huh.php");
     exit;
 }
 ?>

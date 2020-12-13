@@ -1,8 +1,8 @@
 <?php 
     session_start();
     if(!isset($_COOKIE['loggedin'])) {
-        //Send 403 Forbidden response.
-        header($_SERVER["SERVER_PROTOCOL"] . " 403 Forbidden");
+        //Send 404 Forbidden response.
+        header("location: /miniblackboard/wrap/trying-to-outsmart-huh.php");
         session_unset();
         session_destroy();
         exit;

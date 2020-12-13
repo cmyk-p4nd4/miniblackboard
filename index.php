@@ -12,7 +12,7 @@
         if (isset($_POST["uuid"]) && isset($_POST["password"])) {
             $userID = trim($_POST["uuid"]);
             $password = trim($_POST["password"]);
-            if ($stmt = $conn->prepare("select userid,alias,password,permission from permission where userid = ?")) {
+            if ($stmt = $conn->prepare("select userid, alias,password,permission from permission where userid = ?")) {
                 $stmt->bind_param("i", $userID);                
                 if ($stmt->execute()) {
                     $stmt->store_result();
