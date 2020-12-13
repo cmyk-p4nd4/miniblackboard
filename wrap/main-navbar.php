@@ -5,9 +5,7 @@
     </button>
     <div class="collapse navbar-collapse text-white" id="navbarLeft">
         <ul class="navbar-nav" style="color:aliceblue !important;">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Announcements</a>
-            </li>
+            
             <li class="nav-item active">
                 <a class="nav-link" href="#">Course</a>
             </li>
