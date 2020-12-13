@@ -12,7 +12,6 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <!-- Custom Style-->
         <link href="../assets/main-navbar-ui.css" rel="stylesheet">
@@ -30,7 +29,7 @@
                 if ($_COOKIE["permission"] == 'T') {
                     require_once "../instructor_module/course/courseMenu.php";
                 } else {
-
+                    require_once "../student_module/courseMenu.php";
                 }
             }
         ?>

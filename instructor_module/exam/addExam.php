@@ -13,7 +13,7 @@
     <h1 align="center">Register an exam</h1>
     <?php
         print "<p>";
-        print "Your instructor id is: ".$_SESSION['userid']."<br>";
+        print "Your instructor id is: ".$_COOKIE['userid']."<br>";
         print "You are adding an exam for course ".$_POST['courseID']."<br>";
     ?>
 	<form action="registerExam.php" method="post" id="registerForm">

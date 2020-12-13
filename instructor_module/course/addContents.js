@@ -46,7 +46,7 @@ function onChange()
             var submitForm = document.createElement("form");
             submitForm.setAttribute("id","submitForm");
             submitForm.setAttribute("method","post");
-            submitForm.setAttribute("action","/eie4432/project/exam/addExam.php"); //to be changed when implementation!!!
+            submitForm.setAttribute("action","../exam/addExam.php"); //to be changed when implementation!!!
 
             var input1 = document.createElement("input");
             input1.setAttribute("id","contentType");
