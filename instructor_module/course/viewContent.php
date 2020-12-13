@@ -106,24 +106,45 @@
         $duration = explode(";",$duration);
         print "<p>Duration: ".$duration[0].", ".$duration[1]."</p>";
 
-        $dquestion = json_decode($questions);
-        //print(sizeof($dquestion));
-        $dquestion = $dquestion[0];
-        //print(sizeof($dquestion));
-        $e = $dquestion[0];
-        print($e);
+        $questionStruct = json_decode($questions);
+        $questionArray = $questionStruct[0];
+        $questionTypeArray = $questionStruct[1];
+        $answerArray = $questionStruct[2];
+        $correctAnswerArray = $questionStruct[3];
 
+        print "<p>This exam has a total of ".sizeof($questionArray)." questions.</p>";
+        print "<p>Please select your action:</p>";
+        //get student's attempt record
+        $query = "SELECT studentid FROM exam_records WHERE examid ='".$contentid."'";
+        $result = mysqli_query($connect, $query);
+        if (!$result)
+        {
+            printReturnForm();
+            die("Unable to retrieve student's attempt record from the database.");
+        }
 
+        if (mysqli_num_rows($result) <= 0)
+        {
+            //No student attempted.
+            print "<p>There is no student attempted this test.</p>";
+        }
+        else
+        {
+            //There is student attempted, show the performance button
+            print "<p>".mysqli_num_rows($result)." students attempted this test.</p>";
+            print "<form id='viewPerformanceForm' name='viewPerformanceForm' action='/eie4432/project/course/viewContent.php' method='post'>";
+            print "<input type='hidden' id='refExamID' name='refExamID' value='".$contentid."'>";
+            print "<input type='submit' id='viewPerformance_submit' name='viewPerformance_submit' value='View student's performance'>";
+            print "</form>";
+        }
 
-
-
-
-
-
+        //Modify question button
+        print "<form id='modifyForm' name='modifyForm' action='/eie4432/project/exam/modifyExam.php' method='post'>";
+        print "<input type='hidden' id='modifyExamID' name='modifyExamID' value='".$contentid."'>";
+        print "<input type='submit' id='modify_submit' name='modify_submit' value='Modify questions'>";
+        print "</form>";
+        
         printReturnForm();
-
-
-    
     ?>
 </body>
 </html>

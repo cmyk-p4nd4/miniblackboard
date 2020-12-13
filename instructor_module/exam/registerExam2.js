@@ -4,6 +4,7 @@ var questionType = [];
 //questionType: MCQ, SQ, FB
 var answers = [];
 var correctAnswer=[]; //0 or 1. 0 = incorrect, 1 = correct
+var marksOfQuestion=[];
 var currentQuestionNum = 1;
 var nthAns = 0;
 var rowNum = 0;
@@ -93,6 +94,29 @@ function checkQuestionValid()
 				isvalid = false;
 				errorText += "No correct answer was given\n";
 			}
+
+			//detect marks for this question
+			var marksGiven = Number(document.getElementById('marks').value);
+			if (isNaN(marksGiven))
+			{
+				isvalid = false;
+				errorText += "The given marks is not a number!\n";
+			}
+			else
+			{
+				if (marksGiven == "")
+				{
+					isvalid = false;
+					errorText += "Marks given is empty!\n";
+				}
+				else if (marksGiven < 0)
+				{
+					isvalid = false;
+					errorText += "Marks should be at least 0!\n";
+				}
+			}
+
+
 			if (!isvalid)
 			{
 				alert(errorText);
@@ -104,6 +128,7 @@ function checkQuestionValid()
 				answers[currentQuestionNum-1] = givenAnswer;
 				correctAnswer[currentQuestionNum-1] = givenCorrectAnswer;
 				questionType[currentQuestionNum-1] = "MCQ";
+				marksOfQuestion[currentQuestionNum - 1] = marksGiven;
 			}
 		}
 		break;
@@ -122,6 +147,28 @@ function checkQuestionValid()
 				isvalid = false;
 				errorText += "answer\n";
 			}
+
+			//detect marks for this question
+			var marksGiven = Number(document.getElementById('marks').value);
+			if (isNaN(marksGiven))
+			{
+				isvalid = false;
+				errorText += "The given marks is not a number!\n";
+			}
+			else
+			{
+				if (marksGiven == "")
+				{
+					isvalid = false;
+					errorText += "Marks given is empty!\n";
+				}
+				else if (marksGiven < 0)
+				{
+					isvalid = false;
+					errorText += "Marks should be at least 0!\n";
+				}
+			}
+
 			if (!isvalid)
 				alert(errorText);
 			else
@@ -131,7 +178,7 @@ function checkQuestionValid()
 				answers[currentQuestionNum-1] = dummyAnswer;
 				correctAnswer[currentQuestionNum-1] = textAns;
 				questionType[currentQuestionNum-1] = dummyAnswer;
-				
+				marksOfQuestion[currentQuestionNum - 1] = marksGiven;
 			}
 		}
 		break;
@@ -150,6 +197,26 @@ function checkQuestionValid()
 				isvalid = false;
 				errorText += "answer\n";
 			}
+			//detect marks for this question
+			var marksGiven = Number(document.getElementById('marks').value);
+			if (isNaN(marksGiven))
+			{
+				isvalid = false;
+				errorText += "marks is not a number\n";
+			}
+			else
+			{
+				if (marksGiven == "")
+				{
+					isvalid = false;
+					errorText += "Marks given\n";
+				}
+				else if (marksGiven < 0)
+				{
+					isvalid = false;
+					errorText += "Marks should be at least 0\n";
+				}
+			}
 			if (!isvalid)
 				alert(errorText);
 			else
@@ -159,6 +226,7 @@ function checkQuestionValid()
 				answers[currentQuestionNum-1] = dummyAnswer;
 				correctAnswer[currentQuestionNum-1] = textAns;
 				questionType[currentQuestionNum-1] = "FB";
+				marksOfQuestion[currentQuestionNum - 1] = marksGiven;
 			}
 		}
 		break;
@@ -242,7 +310,9 @@ function onNextQuestionClicked()
 					//questioninput
 					var cell = row.insertCell(0);
 					var content = "<p>Question: <input type='text' id='inquestion' name='inquestion'>"+
-					"  <input type='button' id='addansbtn' name='addansbtn' onclick='onAddAnswer();' value='Add an answer' />  <input type='button' id='deleteansbtn' onclick='onRemoveAnswer();' value='Remove an answer' disabled='true'> </p>";
+					"  <input type='button' id='addansbtn' name='addansbtn' onclick='onAddAnswer();' value='Add an answer' />  <input type='button' id='deleteansbtn' onclick='onRemoveAnswer();' value='Remove an answer' disabled='true'> "+
+					"Marks for this question: <input type='number' id='marks' name='marks'>"
+					+"</p>";
 					cell.innerHTML = content;
 					
 					//document.getElementById("inquestion").value = currentQuestion;
@@ -290,7 +360,8 @@ function onNextQuestionClicked()
 					var row = questionTable.insertRow(rowNum);
 					//questioninput
 					var cell = row.insertCell(0);
-					var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60' height = '30'>";
+					var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60' height = '30'>"+
+					"Marks for this question: <input type='number' id='marks' name='marks'></p>";
 					cell.innerHTML = content;
 					
 					rowNum++;
@@ -318,7 +389,8 @@ function onNextQuestionClicked()
 					var row = questionTable.insertRow(rowNum);
 					//questioninput
 					var cell = row.insertCell(0);
-					var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60'>";
+					var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60'>"+
+					"Marks for this question: <input type='number' id='marks' name='marks'></p>";
 					cell.innerHTML = content;
 					
 					//Row 2
@@ -382,14 +454,16 @@ function onPrevQuestionClicked()
 			var answerList = answers[currentQuestionNum-1];
 			var correctAnswerList = correctAnswer[currentQuestionNum-1];
 			var currentQuestion = question[currentQuestionNum-1];
-
+			var currentMarks = marksOfQuestion[currentQuestionNum-1];
 			var testString = "Question: "+currentQuestion+"\n" + "answers: "+answerList+"\ncorrect answers: "+correctAnswerList+"\n";
 			//insert the question row
 			var row = questionTable.insertRow(rowNum);
 			//questioninput
 			var cell = row.insertCell(0);
 			var content = "<p>Question: <input type='text' id='inquestion' name='inquestion'>"+
-			"  <input type='button' id='addansbtn' name='addansbtn' onclick='onAddAnswer();' value='Add an answer' />  <input type='button' id='deleteansbtn' onclick='onRemoveAnswer();' value='Remove an answer' disabled='true'> </p>";
+			"  <input type='button' id='addansbtn' name='addansbtn' onclick='onAddAnswer();' value='Add an answer' />  <input type='button' id='deleteansbtn' onclick='onRemoveAnswer();' value='Remove an answer' disabled='true'> "
+			+"Marks for this question: <input type='number' id='marks' name='marks' value='"+currentMarks+"'>"
+			+"</p>";
 			cell.innerHTML = content;
 			
 			//document.getElementById("inquestion").value = currentQuestion;
@@ -436,10 +510,13 @@ function onPrevQuestionClicked()
 			var answerList = answers[currentQuestionNum-1];
 			var correctAnswerList = correctAnswer[currentQuestionNum-1];
 			var currentQuestion = question[currentQuestionNum-1];
+			var currentMarks = marksOfQuestion[currentQuestionNum-1];
 			var row = questionTable.insertRow(rowNum);
 			//questioninput
 			var cell = row.insertCell(0);
-			var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60' height = '30'>";
+			var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60' height = '30'>"+
+			"Marks for this question: <input type='number' id='marks' name='marks' value='"+currentMarks+"'>"
+			+"</p>";
 			cell.innerHTML = content;
 			
 			rowNum++;
@@ -464,11 +541,13 @@ function onPrevQuestionClicked()
 			var answerList = answers[currentQuestionNum-1];
 			var correctAnswerList = correctAnswer[currentQuestionNum-1];
 			var currentQuestion = question[currentQuestionNum-1];
-
+			var currentMarks = marksOfQuestion[currentQuestionNum-1];
 			var row = questionTable.insertRow(rowNum);
 			//questioninput
 			var cell = row.insertCell(0);
-			var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60'>";
+			var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60'>"+
+			"Marks for this question: <input type='number' id='marks' name='marks' value='"+currentMarks+"'>"
+			+"</p>";
 			cell.innerHTML = content;
 			
 			//Row 2
@@ -525,7 +604,9 @@ function onTypeChange()
 			//questioninput
 			var cell = row.insertCell(0);
 			var content = "<p>Question: <input type='text' id='inquestion' name='inquestion'>"+
-			"  <input type='button' id='addansbtn' name='addansbtn' onclick='onAddAnswer();' value='Add an answer' />  <input type='button' id='deleteansbtn' onclick='onRemoveAnswer();' value='Remove an answer' disabled='true'> </p>";
+			"  <input type='button' id='addansbtn' name='addansbtn' onclick='onAddAnswer();' value='Add an answer' />  <input type='button' id='deleteansbtn' onclick='onRemoveAnswer();' value='Remove an answer' disabled='true'> "+
+			"Marks for this question: <input type='number' id='marks' name='marks'>"
+			+"</p>";
 			cell.innerHTML = content;
 			//add/delete answer buttons
 			
@@ -583,7 +664,7 @@ function onTypeChange()
 			var row = questionTable.insertRow(rowNum);
 			//questioninput
 			var cell = row.insertCell(0);
-			var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60' height = '30'>";
+			var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60' height = '30'>"+" Marks for this question: <input type='number' id='marks' name='marks'></p>";
 			cell.innerHTML = content;
 			
 			//Row 2
@@ -625,7 +706,7 @@ function onTypeChange()
 			var row = questionTable.insertRow(rowNum);
 			//questioninput
 			var cell = row.insertCell(0);
-			var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60'>";
+			var content = "<p>Question: <input type='text' id='inquestion' name='inquestion' size='60'>"+ " Marks for this question: <input type='number' id='marks' name='marks'></p>";
 			cell.innerHTML = content;
 			
 			//Row 2
@@ -664,7 +745,8 @@ function onFinishClick()
 		if (checkQuestionValid())
 		{
 			//JSON.stringify([question,questionType,answers,correctAnswer])
-			var jsonSubmitText = JSON.stringify([question,questionType,answers,correctAnswer]);
+			var jsonSubmitText = JSON.stringify([question,questionType,answers,correctAnswer,marksOfQuestion]);
+			//alert(jsonSubmitText);
 			var questionCount = question.length;
 			document.getElementById("questionCnt").value = questionCount;
 			document.getElementById("questionAnswers").value = jsonSubmitText;
