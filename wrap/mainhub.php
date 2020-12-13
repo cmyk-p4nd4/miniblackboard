@@ -15,18 +15,11 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
         <!-- Custom Style-->
-        <!-- <link href="assets/index-ui.css" rel="stylesheet"> -->
+        <link href="../assets/main-navbar-ui.css" rel="stylesheet">
     </head>
     <body>
         
         <?php 
-            if(!isset($_COOKIE['loggedin'])) {
-                //Send 403 Forbidden response.
-                header($_SERVER["SERVER_PROTOCOL"] . " 403 Forbidden");
-                session_unset();
-                session_destroy();
-                exit;
-            }
             if (isset($_COOKIE["ARM_GPIO"])) {
                 header("location: admin-dashboard.php");
             }else {
