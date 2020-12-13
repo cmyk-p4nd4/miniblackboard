@@ -7,6 +7,9 @@
     if (isset($_POST["addu"])) {
         createUser();
     }
+    if (isset($_POST["modu"])) {
+        modifyUser();
+    }
     if (isset($_POST["removeu"])) {
         removeUser();
     }
@@ -55,7 +58,7 @@
 
         $id = trim($_POST["uid"]);
         $pw = trim($_POST["pw"]);
-        $perm = (empty(trim($_POST["perm"]))) ? trim($_POST["perm"]) : $defaultRank;
+        $perm = (empty($_POST["perm"])) ? $_POST["perm"] : $defaultRank;
         $alias = trim($_POST["name"]);
 
         $stmt = $conn->prepare("insert into permission (userId, permission, password, alias, email) values (?, ?, ?, ?, ?)");
@@ -65,6 +68,20 @@
         $stmt->close();
         $conn->close();
         echo "<meta http-equiv='refresh' content='0'>";
+    }
+
+    function modifyUser() {
+        global $conn;
+        $defaultRank = "S";
+        $id = trim($_POST["mid"]);
+        $perm = $_POST["perm"];
+        $stmt = $conn->prepare("UPDATE permission set `permission` = ? where userid = ?");
+        $check = $stmt->bind_param("si",$perm,$id);
+        echo $stmt->error;
+        $stmt->execute();
+        echo $stmt->error;
+        $stmt->close();
+        $conn->close();
     }
 
     function removeUser() {
@@ -158,7 +175,14 @@
     }
 
     function func6() {
-
+        $conn = new mysqli(DB_HOST, DB_USER, DB_TOKEN, DB_TARGET);
+        $subject = $_POST["terms"][0];
+        $instructor = $_POST["terms"][1];
+        $stmt = $conn->prepare("UPDATE courses set `instructorid`=? where courseid=? ");
+        $stmt->bind_param("ii",$instructor,$subject);
+        $stmt->execute();
+        $stmt->close();
+        $conn->close();
     }
 
     function appendStudent() {

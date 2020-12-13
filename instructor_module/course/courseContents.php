@@ -18,7 +18,7 @@
 
     //in the session and post variable, has - course number, user ID.
     print "<h1 align='center'>Course: ".$_POST['courseInput']."</h1>";
-    print "<p align='right'>Your instructor ID: ".$_SESSION['userid']."<br>".
+    print "<p align='right'>Your instructor ID: ".$_COOKIE['userid']."<br>".
     "<button id='logoutBtn' name='logoutBtn' onclick=''>Log Out</button>".
     "<button id='detailsBtn name='detailsBtn' onclick=''>My details</button>".
     "</p>";

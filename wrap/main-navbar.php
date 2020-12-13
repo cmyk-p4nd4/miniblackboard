@@ -5,9 +5,8 @@
     </button>
     <div class="collapse navbar-collapse text-white" id="navbarLeft">
         <ul class="navbar-nav" style="color:aliceblue !important;">
-            
             <li class="nav-item active">
-                <a class="nav-link" href="#">Course</a>
+                <a class="nav-link nav-item" href="#course-list" data-toggle="tab" role="tab" aria-selected="TRUE">Course</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="#">Grade</a>

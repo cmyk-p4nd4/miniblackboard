@@ -177,7 +177,7 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                             </div>
                     </div>
                     <div class="card">
-                        <h5 class="card-header">Add User</h5>
+                        <h5 class="card-header">Add/Modify User</h5>
                         <div class="card-body">
                             <form id="user" method="POST">
                                 <div class="form-row">
@@ -194,7 +194,7 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="inputGroupSelect12">Password</label>
                                             </div>
-                                            <input type="password" class="form-control" id="inputGroupSelect12" name="createuser-2" required>
+                                            <input type="password" class="form-control" id="inputGroupSelect12" name="createuser-2">
                                         </div>
                                     </div>
                                     <div class="col-auto">
@@ -214,12 +214,17 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="inputGroupSelect14">Name</label>
                                             </div>
-                                            <input type="text" class="form-control" id="inputGroupSelect14" name="createuser-4" required>
+                                            <input type="text" class="form-control" id="inputGroupSelect14" name="createuser-4" >
                                         </div>
                                     </div>
                                     <div class="col-auto">
                                         <div class="input-group">
-                                            <input type='button' class="form-control" value="Add" id="userForm">
+                                            <input type='button' class="form-control" value="Add" id="userForm-a">
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="input-group">
+                                            <input type='button' class="form-control" value="Modify Permssion" id="userForm-m">
                                         </div>
                                     </div>
                                 </div>
@@ -258,36 +263,70 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                             </form>
                         </div>
                     </div>
-                    <div class="card">
-                        <h5 class="card-header">Remove User from Course</h5>
-                        <div class="card-body">
-                            <form id="removestd">
-                                <div class="form-row">
-                                    <div class="col-auto">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect41">Select Subject</label>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <h5 class="card-header">Remove User from Course</h5>
+                                <div class="card-body">
+                                    <form id="removestd">
+                                        <div class="form-row">
+                                            <div class="col-auto">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text" for="inputGroupSelect41">Select Subject</label>
+                                                    </div>
+                                                    <select class="form-control r-subDropdown" id="inputGroupSelect41" name="removeuser-1" required></select>
+                                                </div>
                                             </div>
-                                            <select class="form-control r-subDropdown" id="inputGroupSelect41" name="removeuser-1" required></select>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="form-row"> 
-                                    <div class="col-auto">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text" for="inputGroupSelect42">Select Student</label>
+                                        <div class="form-row"> 
+                                            <div class="col-auto">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text" for="inputGroupSelect42">Select Student</label>
+                                                    </div>
+                                                    <select class="form-control custom-select r-stdDropdown" id="inputGroupSelect42" name="removeuser-2" size="4"  multiple></select>
+                                                </div>
                                             </div>
-                                            <select class="form-control custom-select r-stdDropdown" id="inputGroupSelect42" name="removeuser-2" size="4"  multiple></select>
                                         </div>
-                                    </div>
+                                        <div class="form-row">
+                                            <div class="col-auto">
+                                                <input type="button" class="form-control" value="Submit" id="removestdForm">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-auto">
-                                        <input type="button" class="form-control" value="Submit" id="removestdForm">
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <h5 class="card-header">Reassign Instructor</h5>
+                                <div class="card-body">
+                                    <form id="reassign">
+                                        <div class="form-row">
+                                            <div class="col-auto">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text" for="inputGroupSelect51">Select Subject</label>
+                                                    </div>
+                                                    <select class="form-control subDropdown" id="inputGroupSelect51" name="reassign-1" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text" for="inputGroupSelect52">Select Instructor</label>
+                                                    </div>
+                                                    <select class="form-control tutDropdown" id="inputGroupSelect52" name="reassign-1" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <input type="button" class="form-control" value="Submit" id="reassignForm">
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -316,13 +355,12 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                 $(".stdDropdown").html(data);
             });
         });
-        $("#modifyuser").ready(function() {
+        $("#removestd").ready(function() {
             $.post("../admin_module/admin-dashboard-populate.php", {
                     func2:'1'
             }, function(data) {
                 $(".r-subDropdown").html(data);
             });
-            
         });
         $(".r-subDropdown").change(function() {
             $.post("../admin_module/admin-dashboard-populate.php", {
@@ -360,12 +398,12 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                 location.reload();
             });
         });
-        $("#userForm").on('click', function(e) {
+        $("#userForm-a").on('click', function(e) {
             var reg_id = $("input[name='createuser-1']").val(),
             reg_pw = $("input[name='createuser-2']").val(),
             reg_perm = $("[name='createuser-3']").val(),
             reg_name = $("input[name='createuser-4']").val();
-            console.log(reg_id, reg_pw, reg_perm, reg_name);
+            //console.log(reg_id, reg_pw, reg_perm, reg_name);
             $.post("../admin_module/admin-dashboard-populate.php", {
                 uid: reg_id,
                 pw: reg_pw,
@@ -376,12 +414,22 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                 location.reload();
             });
         });
+        $("#userForm-m").click(function() {
+            var reg_id = $("input[name='createuser-1']").val(),
+            reg_perm = $("[name='createuser-3']").val();
+            $.post("../admin_module/admin-dashboard-populate.php", {
+                mid: $("input[name='createuser-1']").val(),
+                perm: $("[name='createuser-3']").val(),
+                modu: '1'
+            }).done(function() {
+                location.reload();
+            });
+        });
         $("#appendstdForm").on("click", function() {
             var arr = [];
             $("select[name*='appenduser']").each(function() {
                 arr.push($(this).val());
             });
-            json_encode()
             $.post("../admin_module/admin-dashboard-populate.php", {
                 subject: arr[0],
                 students: arr[1],
@@ -390,6 +438,19 @@ if (!isset($_COOKIE["ARM_GPIO"])) {
                 location.reload();
             });
         });
+        $("#reassignForm").click(function() {
+            var arr = [];
+            $("select[name*='reassign']").each(function() {
+                arr.push($(this).val());
+            });
+            $.post("../admin_module/admin-dashboard-populate.php", {
+                terms: arr,
+                func6:'1'
+            }).done(function() {
+                location.reload();
+            });
+        });
+
         $("#user-list i.fa").on("click", function() {
             var target = $(this).closest("tr");
             target.css({

@@ -3,7 +3,7 @@ function processCourse(course)
     //you have the course, then create a new form to store the course and then submit
     var courseForm = document.createElement("form");
     courseForm.setAttribute("method","post");
-    courseForm.setAttribute("action","courseContents.php");
+    courseForm.setAttribute("action","..\\instructor_module\\course\\courseContents.php");
 
     var courseInput = document.createElement("input");
     courseInput.setAttribute("type","hidden");

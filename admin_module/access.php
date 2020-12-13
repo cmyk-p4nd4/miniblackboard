@@ -1,10 +1,7 @@
 <?php 
-    session_start();
     if(!isset($_COOKIE['loggedin'])) {
         //Send 404 Forbidden response.
         header("location: /miniblackboard/wrap/trying-to-outsmart-huh.php");
-        session_unset();
-        session_destroy();
         exit;
     }
     require "../admin_module/connection.php";

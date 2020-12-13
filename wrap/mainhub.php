@@ -24,8 +24,17 @@
                 header("location: admin-dashboard.php");
             }else {
                 require_once "main-navbar.php";
+                ?>
+                <div class="tab-content">
+                <?php
+                if ($_COOKIE["permission"] == 'T') {
+                    require_once "../instructor_module/course/courseMenu.php";
+                } else {
+
+                }
             }
         ?>
+        </div>
 
     </body>
 </html>
