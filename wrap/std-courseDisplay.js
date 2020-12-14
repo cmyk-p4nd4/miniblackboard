@@ -1,14 +1,11 @@
-function onCourseClicked(startDate, endDate, exam_name)
+function onCourseClicked()
 {
     //three tasks
     //1. get necessary elements and contents
     //2. check if it is the time to do exam, if not prompt error
     //3. if yes, then navigate to the exam page.
     
-    alert(startDate);
-    alert(endDate);
-    alert(exam_name);
-    
+    alert("onCourseClicked!")
     
     
     
@@ -17,5 +14,5 @@ function onCourseClicked(startDate, endDate, exam_name)
     //var dString = "expires="+d.toUTCString();
     //document.cookie = "exam_name = " + exam_name + ";" + dString + ";path=/wrap";
 
-
+    //"<?php print $row[2];?>","<?php print $row[3];?>","<?php print $row[1];"
 }
