@@ -78,6 +78,41 @@
                                 </div>
                             </div>
                         </div>
+                        <?php
+                            if ($_COOKIE['permission'] == 'S') {
+                            require_once "../admin_module/connection.php";
+                            $results = $conn->query("SELECT gender, birthday from studentinfo where userid=".$_COOKIE['userid']);
+                            $gender = '';
+                            $birthday = null;
+                            if ($results->num_rows == 0) {
+                                $gender = "Unknown";
+                                $birthday = (new DateTime())->setTimestamp(0);
+                            } else {
+                                $arr = $results->fetch_array();
+                                $gender = $arr[0];
+                                $birthday = $arr[1];
+                            }
+                            
+                        ?>
+                        <div class="form-group row">
+                            <div class="input-group">
+                                <span class="input-group-icon col-sm-2 col-form-label"><i class="fa fa-venus-mars" aria-hidden="true"></i></span>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="gen-input" value="<?php echo $gender;?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="input-group">
+                                <span class="input-group-icon col-sm-2 col-form-label"><i class="fa fa-birthday-cake" aria-hidden="true"></i></span>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control" id="gen-input" value="<?php echo date_format($birthday, "Y-m-d");?>">
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                            }
+                        ?>
                     </form>
                 </div>
                 <div class="modal-footer">
