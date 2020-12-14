@@ -40,7 +40,7 @@
                     var expires = "expires="+d.toUTCString();
                     document.cookie = "course_prefix" + "=" + $(this).html() + ";" + expires + ";path=/miniblackboard/wrap";
                     document.cookie = "courseid" + "=" + $(this).next("input[type='hidden']").first().val() + ";" + expires + ";path=/miniblackboard/wrap";
-                    location.assign("\\miniblackboard\\wrap\\std-courseDisplay.php");
+                    location.assign("..\\wrap\\std-courseDisplay.php");
                 });
             });
         });

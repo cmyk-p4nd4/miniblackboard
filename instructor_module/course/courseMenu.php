@@ -5,7 +5,7 @@
     <?php 
         require_once dirname(__FILE__)."/../../admin_module/connection.php";
         //retrieve all instructor's courses
-        $stmt = $conn->prepare("SELECT course_prefix, coursename FROM courses WHERE instructorid = ?");
+        $stmt = $conn->prepare("SELECT course_prefix, coursename, courseid FROM courses WHERE instructorid = ?");
         $stmt->bind_param("i", $_COOKIE["userid"]);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -19,15 +19,30 @@
         <?php
             foreach ($list as $idx => $row) {
         ?>      
-                <a style="cursor:pointer"class="list-group-item list-group-item-action" <?php echo "id='courseBtn".$idx."' name='".$idx."' onclick='processCourse(\"".$row[0]."\")'";?>>
-                    <?php 
+                <a style="cursor:pointer"class="list-group-item list-group-item-action" <?php echo "id='courseBtn".$idx."' name='".$idx."'";?>><?php 
                         $courseInf = $row[0]." ".$row[1];
                         echo $courseInf;
-                    ?>
-                </a>
+                    ?></a>
+                <input type="hidden" value="<?php echo $row[2]?>">
         <?php
             }
+            $stmt->close();
+            $conn->close();
         ?>
         </div>
         </div>
+        <script>
+        $(function() {
+            $("a[id*='courseBtn']").each(function() {
+                $(this).click(function(){
+                    var d = new Date();
+                    d.setTime(d.getTime() + 86400*1000);
+                    var expires = "expires="+d.toUTCString();
+                    document.cookie = "course_prefix" + "=" + $(this).html() + ";" + expires + ";path=/miniblackboard/instructor_module";
+                    document.cookie = "courseid" + "=" + $(this).next("input[type='hidden']").first().val() + ";" + expires + ";path=/miniblackboard/instructor_module";
+                    location.assign("..\\instructor_module\\course\\courseContents.php");
+                });
+            });
+        });
+    </script>
 </body>
