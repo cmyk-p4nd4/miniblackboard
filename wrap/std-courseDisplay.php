@@ -17,7 +17,7 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+        <script src="std-courseDisplay.js"></script>
     </head>
     <body>
         
@@ -30,13 +30,14 @@
                 while ($row= $result->fetch_array()) {
                 ?>
                     <div class="col-md-4">
-                        <a style="cursor:pointer">
+                        <a style="cursor:pointer" onclick='onCourseClicked(<?php print $row[2];?>,<?php print $row[3];?>);'>
                             <div class="card">
                                 <h5 class="card-header"><?php print $row[0].": ".$row[1];?></h5>
                                 <div class="card-body">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">Commit time: <?php echo date_format(date_create($row[2], new DateTimeZone("Asia/Hong_Kong")), "F j, Y h:ia ")?></li>
                                         <li class="list-group-item">Due Date: <?php echo date_format(date_add(date_create($row[2], new DateTimeZone("Asia/Hong_Kong")), new DateInterval("PT".strtoupper(implode('', explode(";", $row[3]))))), "F j, Y h:ia ");?></li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -49,3 +50,4 @@
         </div>
     </body>
 </html>
+
