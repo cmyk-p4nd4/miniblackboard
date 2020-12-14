@@ -30,11 +30,7 @@
                 while ($row= $result->fetch_array()) {
                 ?>
                     <div class="col-md-4">
-                    <?php 
-                    $endDate = date_format(date_add(date_create($row[2], new DateTimeZone("Asia/Hong_Kong")), new DateInterval("PT".strtoupper(implode('', explode(";", $row[3]))))), "F j, Y h:ia ");
-                    $startDate = date_format(date_create($row[2], new DateTimeZone("Asia/Hong_Kong")), "F j, Y h:ia ");
-                    ?>
-                        <a style="cursor:pointer" onclick='onCourseClicked("<?php print $startDate;?>","<?php print $endDate;?>","<?php print $row[1];");'>
+                        <a style="cursor:pointer" onclick='onCourseClicked("<?php print $row[2];?>","<?php print $row[3];?>","<?php print $row[1];");'>
                             <div class="card">
                                 <h5 class="card-header"><?php print $row[0].": ".$row[1];?></h5>
                                 <div class="card-body">
