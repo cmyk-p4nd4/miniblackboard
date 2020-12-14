@@ -4,7 +4,7 @@
         header("location: /miniblackboard/wrap/trying-to-outsmart-huh.php");
         exit;
     }
-    require "../admin_module/connection.php";
+    require "connection.php";
     $userid = -1;
     $welcomeMsg = "";
     if (empty($_COOKIE["alias"])) {

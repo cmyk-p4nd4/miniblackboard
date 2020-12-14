@@ -9,7 +9,7 @@
     <?php
         function printReturnForm()
         {
-            print "<form id='returnForm' method='post' action='/eie4432/project/course/courseMenu.php'>";
+            print "<form id='returnForm' method='post' action='/miniblackboard/wrap/mainhub.php'>";
             print "<input type = 'submit' id='submitBtn' name='submitBtn' value='Return to course menu'>";
             print "</form>";
         }
@@ -17,7 +17,7 @@
         session_start();
         //retrieve all related 
         $contentid = $_POST["contentID"];
-        print "<p align='right'>Your instructor ID: ".$_SESSION['userid']."<br>".
+        print "<p align='right'>Your instructor ID: ".$_COOKIE['userid']."<br>".
         "<button id='logoutBtn' name='logoutBtn' onclick=''>Log Out</button>".
         "<button id='detailsBtn name='detailsBtn' onclick=''>My details</button>".
         "</p>";

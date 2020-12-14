@@ -16,11 +16,11 @@
         <?php
             foreach ($list as $idx => $row) {
         ?>      
-                <a style="cursor:pointer"class="list-group-item list-group-item-action" <?php echo "id='courseBtn".$idx."' name='".$idx."'";?>><?php 
+                <a style="cursor:pointer"class="list-group-item list-group-item-action" <?php echo "id='courseBtn".$idx."' name='".$row[2]."'";?>><?php 
                         $courseInf = $row[0]." ".$row[1];
                         echo $courseInf;
-                    ?></a>
-                <input type="hidden" value="<?php echo $row[2]?>">
+                    ?>
+                </a><input type="hidden" value="<?php echo $row[2]?>">
         <?php
             }
             $stmt->close();
@@ -38,8 +38,8 @@
                     var d = new Date();
                     d.setTime(d.getTime() + 3600*1000);
                     var expires = "expires="+d.toUTCString();
-                    document.cookie = "course_prefix" + "=" + $(this).html() + ";" + expires + ";path=/wrap";
-                    document.cookie = "courseid" + "=" + $(this).next("input[type='hidden']").first().val() + ";" + expires + ";path=/wrap";
+                    document.cookie = "course_prefix" + "=" + $(this).html() + ";" + expires + ";path=/";
+                    document.cookie = "courseid" + "=" + $(this).attr("name") + ";" + expires + ";path=/";
                     location.assign("..\\wrap\\std-courseDisplay.php");
                 });
             });

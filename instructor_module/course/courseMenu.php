@@ -38,8 +38,8 @@
                     var d = new Date();
                     d.setTime(d.getTime() + 86400*1000);
                     var expires = "expires="+d.toUTCString();
-                    document.cookie = "course_prefix" + "=" + $(this).html() + ";" + expires + ";path=/instructor_module";
-                    document.cookie = "courseid" + "=" + $(this).next("input[type='hidden']").first().val() + ";" + expires + ";path=/instructor_module";
+                    document.cookie = "course_prefix" + "=" + $(this).html() + ";" + expires + ";path=/";
+                    document.cookie = "courseid" + "=" + $(this).next("input[type='hidden']").first().val() + ";" + expires + ";path=/";
                     location.assign("..\\instructor_module\\course\\courseContents.php");
                 });
             });
