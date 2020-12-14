@@ -674,11 +674,13 @@ function onFinish()
     }
     //do a loop to see all the questions of the student have been marked
     var currentStudentMarks = marking[currentStudentIndex];
+    
+    currentStudentMarks = JSON.parse(currentStudentMarks);
     //try to store the 
     //alert(marking[currentStudentIndex]);
     for (var j = 0; j < currentStudentMarks.length; j++)
     {
-        if ((currentStudentMarks[j] == "") || (currentStudentMarks[j] == "?") || (currentStudentMarks[j] == null))
+        if (isNaN(currentStudentMarks[j]))
         {
             isValid = false;
             alert("Marking is not completed");
@@ -686,11 +688,16 @@ function onFinish()
         }
     }
 
+    var totalMarks = 0;
+    for (var k = 0; k < currentStudentMarks.length; k++)
+    {
+        //alert(currentStudentMarks[k]);
+        totalMarks = totalMarks + currentStudentMarks[k];
+    }
+
     if (isValid)
     {
         //all questions saved, send ajax request to update the student's record
-        //var JSONmarking = JSON.stringify(marking[currentStudentIndex]);
-        //alert(JSONmarking);
         if (confirm("Are you sure to update?"))
         {
             var requestUpdate = new XMLHttpRequest();
@@ -711,8 +718,9 @@ function onFinish()
                     alert("Unable to update");
                 }
         }
+            //alert(totalMarks);
             //alert("marking = "+marking[currentStudentIndex]+"\n"+"examid = "+parseInt(document.getElementById("examidRef").innerHTML)+"\nstudentid = "+currentStudentID);
-            requestUpdate.send("marking="+marking[currentStudentIndex]+"&examid="+parseInt(document.getElementById("examidRef").innerHTML)+"&studentid="+currentStudentID);
+            requestUpdate.send("marking="+marking[currentStudentIndex]+"&examid="+parseInt(document.getElementById("examidRef").innerHTML)+"&studentid="+currentStudentID+"&totalMarks="+totalMarks);//
         }
         
     }

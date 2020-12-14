@@ -2,7 +2,8 @@
     $marking = $_POST['marking'];
     $examid = $_POST['examid'];
     $studentid = $_POST['studentid'];
-    
+    $totalMarks = $_POST['totalMarks'];
+
     $examid = $_POST['examid'];
     $server = "us-cdbr-east-02.cleardb.com";
 	$user = "b06abb5474de88";
@@ -14,9 +15,9 @@
 	{
 		die("Fail");
     }
-
-    $updateCmd = "UPDATE exam_records SET marking='".$marking."' WHERE examid='".$examid."' AND 
-    studentid = '".$studentid."';";
+    //"UPDATE exam_records SET marking='".$marking."', totalmarks='' WHERE examid='".$examid."' AND 
+    //studentid = '".$studentid."';";
+    $updateCmd = "UPDATE exam_records SET marking='".$marking."', totalmarks='".$totalMarks."' WHERE examid='".$examid."' AND studentid='".$studentid."';";
     $result = mysqli_query($connect,$updateCmd);
 
     if (!$result)
