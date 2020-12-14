@@ -8,6 +8,6 @@
         $stmt->execute();
         $stmt->close();
         $conn->close();
-        setcookie("alias", $val, time()+3600, '/');
+        setcookie("alias", $val, time()+86400, '/');
     }
 ?>

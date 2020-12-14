@@ -36,7 +36,7 @@
             $("a[id*='courseBtn']").each(function() {
                 $(this).click(function(){
                     var d = new Date();
-                    d.setTime(d.getTime() + 3600*1000);
+                    d.setTime(d.getTime() + 86400*1000);
                     var expires = "expires="+d.toUTCString();
                     document.cookie = "course_prefix" + "=" + $(this).html() + ";" + expires + ";path=/miniblackboard/wrap";
                     document.cookie = "courseid" + "=" + $(this).next("input[type='hidden']").first().val() + ";" + expires + ";path=/miniblackboard/wrap";
