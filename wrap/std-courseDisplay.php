@@ -30,7 +30,7 @@
                 while ($row= $result->fetch_array()) {
                 ?>
                     <div class="col-md-4">
-                        <a style="cursor:pointer" onclick='onCourseClicked();'>
+                        <a style="cursor:pointer" onclick='onCourseClicked("<?php echo $row[2]; ?>","<?php echo $row[3]; ?>"," <?php echo $row[1];?>");'>
                             <div class="card">
                                 <h5 class="card-header"><?php print $row[0].": ".$row[1];?></h5>
                                 <div class="card-body">
