@@ -65,13 +65,6 @@ function onCourseClicked(starttime,duration,examid)
         +"deadline = "+deadline+";"+expireString+";path=/wrap";
 
         window.location.href = "https://web-miniblackboard.herokuapp.com/student_module/take_exam.php";
-        
+
     }
-
-    //var d = new Date();
-    //d.setTime(d.getTime() + 3600 * 1000);
-    //var dString = "expires="+d.toUTCString();
-    //document.cookie = "exam_name = " + exam_name + ";" + dString + ";path=/wrap";
-
-    //"<?php print $row[2];?>","<?php print $row[3];?>","<?php print $row[1];"
 }
