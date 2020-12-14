@@ -95,8 +95,7 @@
                 $viewBtn = $divID."viewBtn";
                 $modifyBtn = $divID."modifyBtn";
                 $deleteBtn = $divID."deleteBtn";
-                print "<p align='center'><button id='".$viewBtn."' name='".$viewBtn."' onclick='onViewChosen(\"".$row['contentid']."\")'>View</button><button id='".$modifyBtn."' name='".$modifyBtn."' onclick='onModifyChosen(\"".$row['contentid']."\")'>Modify</button><button id='".$deleteBtn."' name='".$deleteBtn."' onclick=''>Delete</button>
-                    </p>";
+                print "<p align='center'><button id='".$viewBtn."' name='".$viewBtn."' onclick='onViewChosen(\"".$row['contentid']."\")'>View</button></p>";
                 print "</div>";
                 $countContents++;
             }

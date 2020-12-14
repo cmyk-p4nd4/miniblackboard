@@ -10,10 +10,6 @@
 <?php
 		//start a new session, in actual implementation no need
 		session_start();
-		//
-
-
-		//
 		$_SESSION["examName"] = $_POST["examName"];
 		$_SESSION["examDate"] = $_POST["examDate"];
 		$_SESSION["examTime"] = $_POST["examTime"];
