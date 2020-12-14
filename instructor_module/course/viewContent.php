@@ -113,7 +113,6 @@
         $correctAnswerArray = $questionStruct[3];
 
         print "<p>This exam has a total of ".sizeof($questionArray)." questions.</p>";
-        print "<p>Please select your action:</p>";
         //get student's attempt record
         $query = "SELECT studentid FROM exam_records WHERE examid ='".$contentid."'";
         $result = mysqli_query($connect, $query);
@@ -130,19 +129,23 @@
         }
         else
         {
-            //There is student attempted, show the performance button
             print "<p>".mysqli_num_rows($result)." students attempted this test.</p>";
+            print "<form id='gradeForm' name='gradeForm' action='/eie4432/project/exam/markExam.php' method='post'>";
+            print "<input type='hidden' id='gradeForm_refExamID' name='gradeForm_refExamID' value='".$contentid."'>";
+            print "<input type='hidden' id='gradeForm_refExamPrefix' name='gradeForm_refExamPrefix' value='".$course_prefix."'>";
+            print "<input type='submit' id='gradeForm_submit' name='gradeForm_submit' value='Grade work of students'>";
+            print "</form>";
+
+            //There is student attempted, show the performance button
             print "<form id='viewPerformanceForm' name='viewPerformanceForm' action='/eie4432/project/course/viewContent.php' method='post'>";
             print "<input type='hidden' id='refExamID' name='refExamID' value='".$contentid."'>";
-            print "<input type='submit' id='viewPerformance_submit' name='viewPerformance_submit' value='View student's performance'>";
+            print "<input type='hidden' id='refExamPrefix' name='refExamPrefix' value='".$course_prefix."'>";
+            print "<input type='submit' id='viewPerformance_submit' name='viewPerformance_submit' value='View performance of students'>";
             print "</form>";
+
+            
         }
 
-        //Modify question button
-        print "<form id='modifyForm' name='modifyForm' action='/eie4432/project/exam/modifyExam.php' method='post'>";
-        print "<input type='hidden' id='modifyExamID' name='modifyExamID' value='".$contentid."'>";
-        print "<input type='submit' id='modify_submit' name='modify_submit' value='Modify questions'>";
-        print "</form>";
         
         printReturnForm();
     ?>
