@@ -22,11 +22,12 @@
                         if (password_verify($password, $hashed_password)) {
                              //create new session for user
                             //store user basic variables
-                            setcookie("userid", $id, time()+86400, '/');
-                            setcookie("alias", $alias, time()+86400, '/');
-                            setcookie("loggedin", true, time()+86400, '/');
-                            setcookie("permission", $permission, time()+86400, '/');
-                            if ($permission == "A") setcookie("ARM_GPIO", 0x32f7, time()+864000, '/');
+                            setcookie("userid", $id, time()+3600, '/');
+                            setcookie("alias", $alias, time()+3600, '/');
+                            setcookie("loggedin", true, time()+3600, '/');
+                            setcookie("permission", $permission, time()+3600, '/');
+                            if ($permission == "A") setcookie("ARM_GPIO", 0x32f7, time()+3600, '/');
+                            if ($permission == "A") setcookie("ARM_GPIO", 0x32f7, time()+3600, '/');
                            
                             header("location: wrap/mainhub.php");
                         } else {
