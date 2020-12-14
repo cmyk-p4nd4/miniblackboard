@@ -5,7 +5,9 @@ function onCourseClicked(startDate, endDate, exam_name)
     //2. check if it is the time to do exam, if not prompt error
     //3. if yes, then navigate to the exam page.
     
-    
+    alert(startDate);
+    alert(endDate);
+    alert(exam_name);
     
     
     
