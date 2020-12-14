@@ -6,7 +6,8 @@ function onCourseClicked(starttime,duration,examid)
     //3. if yes, then navigate to the exam page.
     
     alert(starttime);
-    
+    alert(duration);
+    alert(examid);
     
     
     //var d = new Date();
