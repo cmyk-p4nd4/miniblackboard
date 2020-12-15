@@ -35,7 +35,6 @@ function loadExam()
     var debugging = false;
 
     var existingCookies = document.cookie;
-    alert(existingCookies);
     //existingCookies = decodeURIComponent(existingCookies);
     existingCookies = existingCookies.split("; ");
 
@@ -46,6 +45,8 @@ function loadExam()
     exam_name = getCookie("exam_name");
     userName = getCookie("alias");
 
+
+
     //display all Basic information
     var aliasDisp = document.createElement("p");
     aliasDisp.setAttribute("id","aliasDisp");
@@ -54,7 +55,7 @@ function loadExam()
 
     var head = document.createElement("h1")
     head.setAttribute("id","examTitle");
-    head.innerHTML = "You are taking exam: "+existingCookies['exam_name'];
+    //head.innerHTML = "You are taking exam: "+existingCookies['exam_name'];
     document.getElementById("basicInfo").appendChild(head);
 
     var idDisp = document.createElement("p");
