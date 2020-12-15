@@ -24,8 +24,7 @@ function loadExam()
     existingCookies = decodeURIComponent(existingCookies);
     existingCookies = existingCookies.split(";");
 
-    for (var i = 0; i < existingCookies.length; i++)
-        document.write(existingCookies[i]+"<br>");
+    
     userid = existingCookies['userid'];
     deadline = existingCookies['deadline'];
     startTime = existingCookies['start_time'];
