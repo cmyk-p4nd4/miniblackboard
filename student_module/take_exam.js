@@ -366,11 +366,12 @@ function submitWork()
                 break;
             }
         }
+        alert(marking);
 
         //encode student's answers and marking
         var JSONstdAnswer = JSON.stringify(studentAns);
         var JSONmarking = JSON.stringify(marking);
-
+        /*
         //generate the submittion date
         var submitDate = new Date();
         var submitDateStr = submitDate.getFullYear()+"-"+(submitDate.getMonth()+1)+"-"+(submitDate.getDate()+1)
@@ -401,9 +402,9 @@ function submitWork()
                 break;
                 default:
                 {
-                    /*
+                    
                     var posResponse = response;
-                    if (posResponse == "Added")
+                    /*if (posResponse == "Added")
                     {
                         alert("Submit successful!");
                         window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
@@ -411,7 +412,7 @@ function submitWork()
                     {
                         alert("Seems you have attempted this test before!");
                         window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
-                    }*/
+                    }
                     alert(response);
                 }
                 break;
@@ -421,7 +422,7 @@ function submitWork()
         alert(exam_name);
         requestQuestion.send("exam_name="+exam_name+"&userid="+userid+"&submit_time="+submitDateStr+
         "&questionanswers="+backupQuestionTxt+"&student_answer="+JSONstdAnswer+"&marking="+JSONmarking+
-        "&totalmarks="+totalMarks);
+        "&totalmarks="+totalMarks);*/
     }
 
 }

@@ -34,7 +34,6 @@
 
             $query = "INSERT INTO exam_records (examid,studentid,submit_time,questionanswers,student_answer,marking,totalmarks) VALUES ".
             "('".$exam_id."','".$userid."','".$submitTime."','".$questionAnswers."','".$student_answer."','".$marking."','".$totalmarks."');";
-            print($query);
             $result = mysqli_query($connect,$query);
 
             if (!$result)
