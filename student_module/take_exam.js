@@ -23,13 +23,16 @@ function loadExam()
     var existingCookies = document.cookie;
     existingCookies = decodeURIComponent(existingCookies);
     existingCookies = existingCookies.split(";");
-    alert(existingCookies);
-    
+
+    for (var i = 0; i < existingCookies.length; i++)
+        document.write(existingCookies[i]+"\n");
     userid = existingCookies['userid'];
     deadline = existingCookies['deadline'];
     startTime = existingCookies['start_time'];
     exam_name = existingCookies['exam_name'];
     userName = existingCookies['alias'];
+
+    
     
     //display all Basic information
     var aliasDisp = document.createElement("p");
