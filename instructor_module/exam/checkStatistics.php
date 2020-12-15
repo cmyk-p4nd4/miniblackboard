@@ -26,7 +26,7 @@
         <p>Overall statistics: </p>
     </div>
     <div class="float-right">
-        <form id='returnForm' method='post' action='/miniblackboard/wrap/mainhub.php'>
+        <form id='returnForm' method='post' action='/wrap/mainhub.php'>
         <input type='submit' class='btn btn-danger' id='submitBtn' name='submitBtn' value='Return to course menu'>
         </form>
     </div>
