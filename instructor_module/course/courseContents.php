@@ -83,7 +83,7 @@
 </body>
 <script>
     $('button[id="link-ref"]').click(function() {
-        let tmp = $("input[id='content-ref']").first().val();
+        let tmp = $(this).next().val();
         onViewChosen(tmp);
     });
 </script>
