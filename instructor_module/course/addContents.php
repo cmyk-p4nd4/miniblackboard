@@ -10,7 +10,7 @@
     <?php
         session_start();
         $courseCode = $_POST['currentCourse'];
-        $coursePrefix = explode(" ",$course);
+        $coursePrefix = explode(" ",$courseCode);
         print $coursePrefix[0];
         print "<form id='returnForm' name='returnForm' action='courseContents.php' method='post'>";
         print "<p align='right'>Your instructor ID: ".$_COOKIE['userid']."<br>";
