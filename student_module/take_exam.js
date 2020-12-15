@@ -102,7 +102,7 @@ function loadExam()
             break;
             default:
             {
-                alert(originalQuestionTxt);
+                alert(response);
                 originalQuestionTxt = response;
             }
             break;
