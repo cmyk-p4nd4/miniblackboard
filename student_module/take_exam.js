@@ -150,7 +150,7 @@ function displayQuestion(qNum)
             questionDisp.innerHTML = "Question: " + questions[qNum];
             document.getElementById("questionDiv").appendChild(questionDisp);
 
-            var thisAnswers = JSON.parse(answers[qNum]);
+            var thisAnswers = answers[qNum];
 
             for (var i = 0; i < thisAnswers.length; i++)
             {
