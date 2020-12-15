@@ -11,7 +11,7 @@
     if (!$connect)
     {
         print "FailConnection";
-        //die();
+        die();
     }
     else 
     {
@@ -21,7 +21,7 @@
         if (!$result)
         {
             print "FailQuery";
-            //die();
+            die();
         }
 
         //suppose only one row
