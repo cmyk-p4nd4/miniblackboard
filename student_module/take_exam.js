@@ -341,8 +341,8 @@ function submitWork()
                 case "MCQ":    
                 {
                     //get which answer is correct
-                    var correctAnsArray = JSON.parse(correctAnswers[j]);
-                    var AnsArray = JSON.parse(answers[j]);
+                    var correctAnsArray = correctAnswers[j];
+                    var AnsArray = answers[j];
                     var correctAnsPos = 0;
                     for (var t = 0; t < correctAnsArray.length; t++)
                     {
