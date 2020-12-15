@@ -1,4 +1,4 @@
-function onCourseClicked(starttime,duration,examid)
+function onCourseClicked(exam_name,starttime,duration,examid)
 {
     //three tasks
     //1. get necessary elements and contents
@@ -7,6 +7,7 @@ function onCourseClicked(starttime,duration,examid)
     
 
     //2. parse start time and end time
+    var examName = exam_name;
     var startTime = new Date(starttime);
     var startTimeUTC = startTime.toUTCString();
 
