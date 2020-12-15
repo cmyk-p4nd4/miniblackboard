@@ -82,7 +82,7 @@ function loadExam()
 
     //do an SQL query to get the questions
     var requestQuestion = new XMLHttpRequest();
-    requestQuestion.open("POST","get_exam.php");
+    requestQuestion.open("POST","/get_exam.php");
     requestQuestion.setRequestHeader('content-type','application/x-www-form-urlencoded; charset=UTF-8');
     requestQuestion.onload=function()
     {
