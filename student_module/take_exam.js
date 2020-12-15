@@ -103,7 +103,6 @@ function loadExam()
             break;
             default:
             {
-                alert(response);
                 originalQuestionTxt = response;
             }
             break;
@@ -113,6 +112,7 @@ function loadExam()
 
     //suppose all failure response has been redirected.
     backupQuestionTxt = originalQuestionTxt;
+    alert(originalQuestionTxt);
     originalQuestionTxt = JSON.parse(originalQuestionTxt);
     questions = JSON.parse(originalQuestionTxt[0]);
     questionType = JSON.parse(originalQuestionTxt[1]);
