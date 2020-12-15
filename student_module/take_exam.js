@@ -336,7 +336,7 @@ function submitWork()
             //one question
             //fetch the mark of this question
             var thisQuestionScore = marksAvailable[j]
-            alert(thisQuestionScore);
+            
             switch (questionType[j])
             {
                 case "MCQ":    
@@ -367,7 +367,7 @@ function submitWork()
                 break;
             }
         }
-        
+        alert(marking);
 
         //encode student's answers and marking
         var JSONstdAnswer = JSON.stringify(studentAns);
