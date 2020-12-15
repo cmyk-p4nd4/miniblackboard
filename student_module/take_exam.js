@@ -40,7 +40,7 @@ function loadExam()
     
     
     userid = getCookie('userid');
-    alert(userid);
+    //alert(userid);
     deadline = getCookie('deadline');
     startTime = getCookie("start_time");
     exam_name = getCookie("exam_name");
@@ -105,29 +105,31 @@ function loadExam()
             {
                 alert(response);
                 originalQuestionTxt = response;
+
+                 //suppose all failure response has been redirected.
+                backupQuestionTxt = originalQuestionTxt;
+                alert(originalQuestionTxt);
+                originalQuestionTxt = JSON.parse(originalQuestionTxt);
+                questions = JSON.parse(originalQuestionTxt[0]);
+                questionType = JSON.parse(originalQuestionTxt[1]);
+                answers = JSON.parse(originalQuestionTxt[2]);
+                correctAnswers = JSON.parse(originalQuestionTxt[3]);
+                marksAvailable = JSON.parse(originalQuestionTxt[4]);
+
+                var questionCntDisp = document.createElement("p");
+                questionCntDisp.setAttribute("id","questionCntDisp");
+                questionCntDisp.innerHTML = "There are a total of "+questions.length+" questions.";
+                document.getElementById("basicInfo").appendChild(questionCntDisp);
+
+                //display the first question
+                displayQuestion(currentQNum);
             }
             break;
         }
     };
     requestQuestion.send("userid="+userid+"&exam_name="+exam_name);
 
-    //suppose all failure response has been redirected.
-    backupQuestionTxt = originalQuestionTxt;
-    alert(originalQuestionTxt);
-    originalQuestionTxt = JSON.parse(originalQuestionTxt);
-    questions = JSON.parse(originalQuestionTxt[0]);
-    questionType = JSON.parse(originalQuestionTxt[1]);
-    answers = JSON.parse(originalQuestionTxt[2]);
-    correctAnswers = JSON.parse(originalQuestionTxt[3]);
-    marksAvailable = JSON.parse(originalQuestionTxt[4]);
-
-    var questionCntDisp = document.createElement("p");
-    questionCntDisp.setAttribute("id","questionCntDisp");
-    questionCntDisp.innerHTML = "There are a total of "+questions.length+" questions.";
-    document.getElementById("basicInfo").appendChild(questionCntDisp);
-
-    //display the first question
-    displayQuestion(currentQNum);
+   
 
 }
 
