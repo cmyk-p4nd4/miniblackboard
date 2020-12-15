@@ -90,7 +90,7 @@
                             } else {
                                 $arr = $results->fetch_array();
                                 $gender = $arr[0];
-                                $birthday = $arr[1];
+                                $birthday = new DateTime($arr[1]);
                             }
                             
                         ?>
@@ -106,7 +106,7 @@
                             <div class="input-group">
                                 <span class="input-group-icon col-sm-2 col-form-label"><i class="fa fa-birthday-cake" aria-hidden="true"></i></span>
                                 <div class="col-sm-10">
-                                    <input type="date" class="form-control" id="gen-input" value="<?php echo date_format($birthday, "Y-m-d");?>">
+                                    <input type="date" class="form-control" id="birth-input" value="<?php echo date_format($birthday, "Y-m-d");?>">
                                 </div>
                             </div>
                         </div>
@@ -120,14 +120,22 @@
                 </div>
                 <script>
                     $(function() {
-                        var input = $("#profilecontent #nick-input").val();
+                        var input1 = $("#profilecontent #nick-input").val();
                         $("#nickUpdate").click(function() {
-                            //console.log(input != $("#nick-input").val());
-                            if (input != $("#nick-input").val()) {
+                            if (input1 != $("#nick-input").val()) {
                                 $.post("navbar-jquery.php", {
                                     val: $("#nick-input").val(),
                                     changenick: '1'
                                 }).done(function () {
+                                    location.reload();
+                                });
+                            }
+                            if ($("#birth-input").length + $("#gen-input").length >=0) {
+                                $.post("navbar-jquery.php", {
+                                    gender: $("#gen-input").val(),
+                                    birth: $("#birth-input").val(),
+                                    gb: '1'
+                                }).done(function() {
                                     location.reload();
                                 });
                             }
