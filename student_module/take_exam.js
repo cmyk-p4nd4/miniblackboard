@@ -33,7 +33,7 @@ function loadExam()
     //retrieve the cookies first
     //exam_name, start_time, deadline, userid 
     var debugging = false;
-
+    currentQNum = 0;
     var existingCookies = document.cookie;
     //existingCookies = decodeURIComponent(existingCookies);
     existingCookies = existingCookies.split("; ");
@@ -237,19 +237,23 @@ function displayButtons(qNum)
     prevBtn.setAttribute("onclick","prevQuestion();");
     prevBtn.innerHTML = "Previous Question";
     if (qNum <= 0)
-        prevBtn.setAttribute("disabled","true");
+        prevBtn.disabled = true;
     else
-        prevBtn.setAttribute("disabled","false");
+        prevBtn.disabled = false;
     document.getElementById("buttonList").appendChild(prevBtn);
 
     var nextBtn = document.createElement("button");
     nextBtn.setAttribute("id","nextBtn");
     nextBtn.setAttribute("onclick","nextQuestion();");
     nextBtn.innerHTML = "Next Question";
-    if (qNum >= questions.length - 1)
-        nextBtn.setAttribute("disabled","true");
-    else
-        nextBtn.setAttribute("disabled","false");
+
+    if (qNum < questions.length -1) 
+    {
+        nextBtn.disabled = false; 
+    } else
+    {
+        nextBtn.disabled = true;
+    }
     document.getElementById("buttonList").appendChild(nextBtn);
 
     var submitBtn = document.createElement("button");
