@@ -47,7 +47,7 @@ function loadExam()
     var examNameDisp = document.createElement("p");
     examNameDisp.setAttribute("id","examNameDisp");
     examNameDisp.innerHTML = "Exam name: "+exam_name;
-    document.getElementById("examNameDisp").appendChild(examNameDisp);
+    document.getElementById("basicInfo").appendChild(examNameDisp);
 
     var startTimeDisp = document.createElement("p");
     startTimeDisp.setAttribute("id","startTimeDisp");
