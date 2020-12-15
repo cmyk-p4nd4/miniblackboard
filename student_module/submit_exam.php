@@ -32,7 +32,7 @@
             $row = mysqli_fetch_assoc($result);
             $exam_id = $row['examid'];
 
-            $query = "INSERT INTO exam_records (`examid`,`studentid`,`submit_time`,`questionanswers`,`student_answer`,`marking`,`totalmarks`) VALUES ".
+            $query = "INSERT INTO exam_records (examid,studentid,submit_time,questionanswers,student_answer,marking,totalmarks) VALUES ".
             "('".$exam_id."','".$userid."','".$submitTime."','".$questionAnswers."','".$student_answer."','".$marking."','".$totalmarks."');";
             $result = mysqli_query($connect,$result);
 
