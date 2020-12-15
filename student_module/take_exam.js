@@ -378,6 +378,7 @@ function submitWork()
         var JSONstdAnswer = JSON.stringify(studentAns);
         var JSONmarking = JSON.stringify(marking);
         
+        
         //generate the submittion date
         var submitDate = new Date();
         var submitDateStr = submitDate.getFullYear()+"-"+(submitDate.getMonth()+1)+"-"+(submitDate.getDate()+1)
