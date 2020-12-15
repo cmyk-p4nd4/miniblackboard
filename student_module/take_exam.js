@@ -301,7 +301,7 @@ function submitWork()
                 properlyFilled = false;
             else if (studentAns[i] == "")
                 properlyFilled = false;
-            if (!properFilled)
+            if (!properlyFilled)
                 break;
         }
     }
