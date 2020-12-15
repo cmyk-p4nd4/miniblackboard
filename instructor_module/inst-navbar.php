@@ -14,7 +14,6 @@
                 <a class="nav-link dropdown-toggle" href="#" id="profileLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <?php echo $welcomeMsg; ?>
                 </a>
-
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileLink">
                     <a class="dropdown-item" id="edit-profile" data-toggle="modal" data-target="#profileForm">Edit Profile</a>
                     <div class="dropdown-divider"></div>

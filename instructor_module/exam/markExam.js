@@ -701,7 +701,7 @@ function onFinish()
         if (confirm("Are you sure to update?"))
         {
             var requestUpdate = new XMLHttpRequest();
-            requestUpdate.open("POST","/eie4432/project/exam/updateResults.php");
+            requestUpdate.open("POST","../exam/updateResults.php");
             requestUpdate.setRequestHeader('content-type','application/x-www-form-urlencoded; charset=UTF-8');
             requestUpdate.onload = function()
             {
