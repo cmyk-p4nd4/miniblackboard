@@ -51,13 +51,13 @@
             printReturnForm();
             die("Error when retrieving the database data. Reason: ".mysqli_connect_errno());
         }
-
+        $cid1 = 0;
         //has result
         while ($row = mysqli_fetch_assoc($result))
-            $courseID = $row["courseid"];//suppose each prefix is unique, change prefix to course id.
+            $cid1 = $row["courseid"];//suppose each prefix is unique, change prefix to course id.
 
         //get the latest exam number
-        $queryCmd = "SELECT examid FROM exams WHERE examid BETWEEN ". $courseID ."00000 AND ".$courseID."99999;";
+        $queryCmd = "SELECT examid FROM exams WHERE examid BETWEEN ". $cid1 ."00000 AND ".$cid1."99999;";
         $result = mysqli_query($connect,$queryCmd);
 
         if (!$result)
@@ -67,7 +67,7 @@
         }
 
         //assign a exam id.
-        $existingRecordNumber = $courseID."00000";
+        $existingRecordNumber = $cid1."00000";
         while ($row = mysqli_fetch_assoc($result))
         {
             $cid = $row['examid'];
@@ -108,7 +108,7 @@
         
         //also update the content in course.
         //check the contentid
-        $queryCmd = "SELECT contentid FROM course_contents WHERE contentid BETWEEN ".$courseID."00000 AND ".$courseID."99999;";
+        $queryCmd = "SELECT contentid FROM course_contents WHERE contentid BETWEEN ".$cid1."00000 AND ".$cid1."99999;";
         $queryResult = mysqli_query($connect,$queryCmd);
         if (!$queryResult)
         {
@@ -125,7 +125,7 @@
         }
 //FOCUS
         $contentID++;
-        $queryCmd = "INSERT INTO course_contents (`courseid`,`contentid`,`type`) VALUES ('".$courseID."','".$contentID."','Exam');";
+        $queryCmd = "INSERT INTO course_contents (`courseid`,`contentid`,`type`) VALUES ('".$cid1."','".$contentID."','Exam');";
         $queryResult = mysqli_query($connect,$queryCmd);
         if (!$queryResult)
         {
