@@ -354,6 +354,9 @@ function submitWork()
                     {
                         totalMarks += thisQuestionScore;
                         marking[j] = thisQuestionScore;
+                    } else
+                    {
+                        marking[j] = 0;
                     }
                 }
                 break;
