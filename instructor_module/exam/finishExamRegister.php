@@ -12,7 +12,8 @@
     <?php
     function printReturnForm()
     {
-        print "<form id='returnForm' method='post' action='/eie4432/project/course/courseContents.php'>";
+        
+        print "<form id='returnForm' method='post' action='../course/courseContents.php'>";
         print "<input type = 'hidden' id='courseInput' name='courseInput' value='".$_POST["currentCourse"]."'>";
         print "<input type = 'submit' id='submitBtn' name='submitBtn' value='Return to course content'>";
         print "</form>";

@@ -8,7 +8,7 @@ function onChange()
         case "Tutorial":
         case "Textbook":
         {
-            inputDiv.innerHTML = "";
+            /*inputDiv.innerHTML = "";
             //create a form in inputDiv and provide a button for submit.
             //Note: if have enough time, finish this
             var submitForm = document.createElement("form");
@@ -37,7 +37,7 @@ function onChange()
             submitForm.appendChild(input1);
             submitForm.appendChild(input2);
             submitForm.appendChild(submitBtn);
-            inputDiv.appendChild(submitForm);
+            inputDiv.appendChild(submitForm);*/
         }
         break;
         case "Exam":
@@ -46,7 +46,7 @@ function onChange()
             var submitForm = document.createElement("form");
             submitForm.setAttribute("id","submitForm");
             submitForm.setAttribute("method","post");
-            submitForm.setAttribute("action","../exam/addExam.php"); //to be changed when implementation!!!
+            submitForm.setAttribute("action","..\\exam\\addExam.php"); //to be changed when implementation!!!
 
             var input1 = document.createElement("input");
             input1.setAttribute("id","contentType");

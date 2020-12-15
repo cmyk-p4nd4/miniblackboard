@@ -734,8 +734,9 @@ function onBackPressed()
 {
     if (confirm("Are you sure to return to exam detail?"))
     {
+        ///eie4432/project/course/viewContent.php
         var leaveForm = document.createElement("form")
-        leaveForm.setAttribute("action",'/eie4432/project/course/viewContent.php');
+        leaveForm.setAttribute("action",'../course/viewContent.php');
         leaveForm.setAttribute("method","post");
         document.body.appendChild(leaveForm);
 

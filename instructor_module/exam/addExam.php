@@ -34,8 +34,8 @@
 	</p>
 	<p><button type="button" onclick="check();">Next</button></p>
 	</form>
-	<?php
-			print "<form id='returnForm' method='post' action='/eie4432/project/course/courseContents.php'>";
+	<?php 
+			print "<form id='returnForm' method='post' action='../course/courseContents.php'>";
 			print "<input type = 'hidden' id='courseInput' name='courseInput' value='".$_POST['courseID']."'>";
 			print "<input type = 'submit' id='submitBtn' name='submitBtn' value='Return to course content'>";
 			print "</form>";
