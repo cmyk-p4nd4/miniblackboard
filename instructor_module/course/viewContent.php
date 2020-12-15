@@ -130,14 +130,14 @@
         else
         {
             print "<p>".mysqli_num_rows($result)." students attempted this test.</p>";
-            print "<form id='gradeForm' name='gradeForm' action='/eie4432/project/exam/markExam.php' method='post'>";
+            print "<form id='gradeForm' name='gradeForm' action='../exam/markExam.php' method='post'>";
             print "<input type='hidden' id='gradeForm_refExamID' name='gradeForm_refExamID' value='".$contentid."'>";
             print "<input type='hidden' id='gradeForm_refExamPrefix' name='gradeForm_refExamPrefix' value='".$course_prefix."'>";
             print "<input type='submit' id='gradeForm_submit' name='gradeForm_submit' value='Grade work of students'>";
             print "</form>";
 
             //There is student attempted, show the performance button
-            print "<form id='viewPerformanceForm' name='viewPerformanceForm' action='/eie4432/project/course/viewContent.php' method='post'>";
+            print "<form id='viewPerformanceForm' name='viewPerformanceForm' action='viewContent.php' method='post'>";
             print "<input type='hidden' id='refExamID' name='refExamID' value='".$contentid."'>";
             print "<input type='hidden' id='refExamPrefix' name='refExamPrefix' value='".$course_prefix."'>";
             print "<input type='submit' id='viewPerformance_submit' name='viewPerformance_submit' value='View performance of students'>";
