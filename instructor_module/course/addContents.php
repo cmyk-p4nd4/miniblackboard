@@ -14,7 +14,7 @@
         print "<form id='returnForm' name='returnForm' action='courseContents.php' method='post'>";
         print "<p align='right'>Your instructor ID: ".$_COOKIE['userid']."<br>";
         print "<input type='submit' value='Return to course contents'></p>";
-        print "<input type='hidden' id='courseInput' name='courseInput' value='".$coursePrefix."'>";
+        print "<input type='hidden' id='courseInput' name='courseInput' value='".$coursePrefix[0]."'>";
         print "</form>";
 
         print "<p>Course: ".$courseCode."</p>";
