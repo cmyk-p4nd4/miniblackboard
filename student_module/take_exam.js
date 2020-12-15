@@ -36,7 +36,7 @@ function loadExam()
 
     var existingCookies = document.cookie;
     //existingCookies = decodeURIComponent(existingCookies);
-    existingCookies = decodeURIComponent(existingCookies);
+    existingCookies = existingCookies.split("; ");
     
     
     userid = getCookie('userid');
@@ -50,7 +50,7 @@ function loadExam()
     //display all Basic information
     var aliasDisp = document.createElement("p");
     aliasDisp.setAttribute("id","aliasDisp");
-    
+    userName = decodeURI(userName);
     aliasDisp.innerHTML = "Your name: "+userName;
     document.getElementById("basicInfo").appendChild(aliasDisp);
 
