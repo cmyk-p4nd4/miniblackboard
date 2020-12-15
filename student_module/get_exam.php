@@ -28,6 +28,9 @@
     {
         $row = mysqli_fetch_assoc($result);
         print $row['questions'];
+    } else
+    {
+        print "NoResultFound";
     }
     
 
