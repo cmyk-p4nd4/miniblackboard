@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php 
-    header("refresh: 3; url=/miniblackboard");
+    header("refresh: 3; url=/");
 ?>
 <html>
 <body>
