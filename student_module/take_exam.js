@@ -36,7 +36,7 @@ function loadExam()
 
     var existingCookies = document.cookie;
     //existingCookies = decodeURIComponent(existingCookies);
-    existingCookies = unescape(existingCookies);
+    existingCookies = decodeURIComponent(existingCookies);
     
     
     userid = getCookie('userid');
