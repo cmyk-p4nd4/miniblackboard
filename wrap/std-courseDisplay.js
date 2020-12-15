@@ -70,7 +70,7 @@ function onCourseClicked(exam_name,starttime,duration,examid)
         document.cookie = "start_time="+startTimeUTC+";path=/";
         document.cookie = "deadline="+deadlineStr+";path=/";
         document.cookie = expireString+";path=/";
-        alert(document.cookie);
+        //alert(document.cookie);
         window.location.href = "../student_module/take_exam.php";
 
     }
