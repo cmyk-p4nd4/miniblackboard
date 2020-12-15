@@ -34,7 +34,7 @@
                 <div class="modal-body container">
                     <form id="profilecontent">
                         <div class="form-group">
-                            <img src="../assets/def-image.jpg" class="mx-auto d-block" width="50%" height="auto">
+                            <img src="../../assets/def-image.jpg" class="mx-auto d-block" width="50%" height="auto">
                         </div>
                         <div class="form-group row">
                             <div class="input-group">
