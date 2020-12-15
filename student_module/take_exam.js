@@ -418,6 +418,7 @@ function submitWork()
         }
         };
         //
+        alert(exam_name);
         requestQuestion.send("exam_name="+exam_name+"&userid="+userid+"&submit_time="+submitDateStr+
         "&questionanswers="+backupQuestionTxt+"&student_answer="+JSONstdAnswer+"&marking="+JSONmarking+
         "&totalmarks="+totalMarks);
