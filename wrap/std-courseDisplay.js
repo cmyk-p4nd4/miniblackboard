@@ -42,7 +42,7 @@ function onCourseClicked(starttime,duration,examid)
     var isdebug = true;
     var canStart = true;
     //check if the time is correct.
-    if (!isDebug)
+    if (!isdebug)
     {
         var currentTime = new Date();
         if (currentTime < startTime)
