@@ -189,7 +189,7 @@ function displayQuestion(qNum)
             var answerDisp = document.createElement("p");
             answerDisp.setAttribute("id","answerDisp");
             answerDisp.innerHTML = "Answer: ";
-            document.getElementById("answerDisp").appendChild(answerDisp);
+            document.getElementById("questionDiv").appendChild(answerDisp);
 
             var answerInput = document.createElement("input");
             answerInput.setAttribute("type","text");
