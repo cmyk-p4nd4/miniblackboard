@@ -1,7 +1,7 @@
 <?php 
     if(!isset($_COOKIE['loggedin'])) {
         //Send 404 Forbidden response.
-        header("location: /miniblackboard/wrap/trying-to-outsmart-huh.php");
+        header("location: ../wrap/trying-to-outsmart-huh.php");
         exit;
     }
     require "connection.php";
