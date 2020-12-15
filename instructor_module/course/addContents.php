@@ -11,6 +11,7 @@
         session_start();
         $courseCode = $_POST['currentCourse'];
         $coursePrefix = explode(" ",$course);
+        print $coursePrefix;
         print "<form id='returnForm' name='returnForm' action='courseContents.php' method='post'>";
         print "<p align='right'>Your instructor ID: ".$_COOKIE['userid']."<br>";
         print "<input type='submit' value='Return to course contents'></p>";
