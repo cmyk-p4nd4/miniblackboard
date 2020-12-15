@@ -39,6 +39,11 @@ function loadExam()
     aliasDisp.innerHTML = "Your name: "+userName;
     document.getElementById("basicInfo").appendChild(aliasDisp);
 
+    var head = document.createElement("h1")
+    head.setAttribute("id","examTitle");
+    head.innerHTML = "You are taking exam: "+existingCookies['exam_name'];
+    document.getElementById("basicInfo").appendChild(head);
+    
     var idDisp = document.createElement("p");
     idDisp.setAttribute("id","idDisp");
     idDisp.innerHTML = "Your student id: "+userid;
