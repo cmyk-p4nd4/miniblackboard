@@ -103,7 +103,6 @@ function loadExam()
             break;
             default:
             {
-                alert(response);
                 originalQuestionTxt = response;
 
                  //suppose all failure response has been redirected.
@@ -114,6 +113,7 @@ function loadExam()
                 questionType = JSON.parse(originalQuestionTxt[1]);
                 answers = JSON.parse(originalQuestionTxt[2]);
                 correctAnswers = JSON.parse(originalQuestionTxt[3]);
+                alert(originalQuestionTxt[4]);
                 marksAvailable = JSON.parse(originalQuestionTxt[4]);
 
                 var questionCntDisp = document.createElement("p");
