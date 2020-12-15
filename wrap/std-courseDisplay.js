@@ -67,9 +67,9 @@ function onCourseClicked(exam_name,starttime,duration,examid)
         expireTime.setTime(expireTime.getTime()+86400*1000);
 
         var expireString = "expires="+expireTime.toUTCString();
-        document.cookie = "start_time="+startTimeUTC+";path=/";
-        document.cookie = "deadline="+deadlineStr+";path=/";
-        document.cookie = expireString+";path=/";
+        document.cookie = "start_time="+startTimeUTC+";"+expireString+";path=/";
+        document.cookie = "deadline="+deadlineStr+";"+expireString+";path=/";
+        document.cookie = "exam_name="+examName+";"+expireString+";path=/";
         //alert(document.cookie);
         window.location.href = "../student_module/take_exam.php";
 
