@@ -121,6 +121,7 @@ function loadExam()
 
                 //display the first question
                 displayQuestion(currentQNum);
+                displayButtons(qNum);
             }
             break;
         }
@@ -154,11 +155,18 @@ function displayQuestion(qNum)
 
             for (var i = 0; i < thisAnswers.length; i++)
             {
+                var radioParagraph = document.createElement("p");
+                radioParagraph.setAttribute("id","answerP"+i);
                 var answerRadio = document.createElement("input");
                 answerRadio.setAttribute("type","radio");
                 answerRadio.setAttribute("id","answer"+i);
                 answerRadio.setAttribute("name","answer");
                 answerRadio.setAttribute("value",thisAnswers[i]);
+                radioParagraph.appendChild(answerRadio);
+                var answerLabel = document.createElement("label");
+                answerLabel.setAttribute("for","answer"+i);
+                radioParagraph.appendChild(answerLabel);
+                document.getElementById("questionDiv").appendChild(radioParagraph);
             }
 
 
