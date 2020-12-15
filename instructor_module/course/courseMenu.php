@@ -3,7 +3,7 @@
 </head>
 <body>
     <?php 
-        require_once "/../../admin_module/connection.php";
+        require_once dirname(__FILE__)."/../../admin_module/connection.php";
         //retrieve all instructor's courses
         $stmt = $conn->prepare("SELECT course_prefix, coursename, courseid FROM courses WHERE instructorid = ?");
         $stmt->bind_param("i", $_COOKIE["userid"]);

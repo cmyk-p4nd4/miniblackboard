@@ -1,4 +1,4 @@
-<?php require_once dirname(__FILE__)."\..\..\admin_module\access.php"?>
+<?php require_once dirname(__FILE__)."/../../admin_module/access.php"?>
 <!DOCTYPE html>
 <html>
 <head>
