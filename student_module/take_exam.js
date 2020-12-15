@@ -366,18 +366,26 @@ function submitWork()
                 break;
             }
         }
-        alert(marking);
+        
 
         //encode student's answers and marking
         var JSONstdAnswer = JSON.stringify(studentAns);
         var JSONmarking = JSON.stringify(marking);
-        /*
+        
         //generate the submittion date
         var submitDate = new Date();
         var submitDateStr = submitDate.getFullYear()+"-"+(submitDate.getMonth()+1)+"-"+(submitDate.getDate()+1)
         +" "+(submitDate.getHours())+":"+(submitDate.getMinutes())+":"+(submitDate.getSeconds());
         
+        alert(exam_name);
+        alert(userid);
+        alert(submitDateStr);
+        alert(backupQuestionTxt);
+        alert(JSONstdAnswer);
+        alert(JSONmarking);
+        alert(totalMarks);
 
+        /*
         //send stdAnswer, studentid, time of submit, backup...(original text), marking and totalmarks
         //do an SQL query to get the questions
         var requestQuestion = new XMLHttpRequest();
