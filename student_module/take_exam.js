@@ -343,7 +343,9 @@ function submitWork()
                 {
                     //get which answer is correct
                     var correctAnsArray = correctAnswers[j];
+                    alert(correctAnsArray);
                     var AnsArray = answers[j];
+                    alert(AnsArray);
                     var correctAnsPos = 0;
                     for (var t = 0; t < correctAnsArray.length; t++)
                     {
@@ -380,7 +382,7 @@ function submitWork()
         var submitDate = new Date();
         var submitDateStr = submitDate.getFullYear()+"-"+(submitDate.getMonth()+1)+"-"+(submitDate.getDate()+1)
         +" "+(submitDate.getHours())+":"+(submitDate.getMinutes())+":"+(submitDate.getSeconds());
-        
+        /*
         alert(exam_name);
         alert(userid);
         alert(submitDateStr);
@@ -389,7 +391,7 @@ function submitWork()
         alert(marking);
         alert(JSONmarking);
         alert(totalMarks);
-        
+        */
         /*
         //send stdAnswer, studentid, time of submit, backup...(original text), marking and totalmarks
         //do an SQL query to get the questions
