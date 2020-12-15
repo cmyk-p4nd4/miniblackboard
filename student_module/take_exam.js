@@ -343,9 +343,9 @@ function submitWork()
                 {
                     //get which answer is correct
                     var correctAnsArray = correctAnswers[j];
-                    alert(correctAnsArray);
+                    //alert(correctAnsArray);
                     var AnsArray = answers[j];
-                    alert(AnsArray);
+                    //alert(AnsArray);
                     var correctAnsPos = 0;
                     for (var t = 0; t < correctAnsArray.length; t++)
                     {
@@ -372,7 +372,7 @@ function submitWork()
                 break;
             }
         }
-        alert(marking);
+        //alert(marking);
 
         //encode student's answers and marking
         var JSONstdAnswer = JSON.stringify(studentAns);
@@ -383,16 +383,6 @@ function submitWork()
         var submitDate = new Date();
         var submitDateStr = submitDate.getFullYear()+"-"+(submitDate.getMonth()+1)+"-"+(submitDate.getDate()+1)
         +" "+(submitDate.getHours())+":"+(submitDate.getMinutes())+":"+(submitDate.getSeconds());
-        
-        alert(exam_name);
-        alert(userid);
-        alert(submitDateStr);
-        alert(backupQuestionTxt);
-        alert(JSONstdAnswer);
-        alert(marking);
-        alert(JSONmarking);
-        alert(totalMarks);
-        
         
         //send stdAnswer, studentid, time of submit, backup...(original text), marking and totalmarks
         //do an SQL query to get the questions
@@ -419,7 +409,7 @@ function submitWork()
                 case "FailQueryOrDuplicate":
                 {
                     alert("You have already submitted once!");
-                    
+                    window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
                 }
                 break;
                 default:
@@ -435,13 +425,13 @@ function submitWork()
                         alert("Seems you have attempted this test before!");
                         window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
                     }
-                    alert(response);
+                    
                 }
                 break;
         }
         };
         //
-        alert(exam_name);
+        
         requestQuestion.send("exam_name="+exam_name+"&userid="+userid+"&submit_time="+submitDateStr+
         "&questionanswers="+backupQuestionTxt+"&student_answer="+JSONstdAnswer+"&marking="+JSONmarking+
         "&totalmarks="+totalMarks);
