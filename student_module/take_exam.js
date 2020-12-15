@@ -416,6 +416,12 @@ function submitWork()
                     //window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
                 }
                 break;
+                case "FailQueryOrDuplicate":
+                {
+                    alert("You have already submitted once!");
+                    
+                }
+                break;
                 default:
                 {
                     

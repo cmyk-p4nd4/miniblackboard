@@ -38,7 +38,7 @@
 
             if (!$result)
             {
-                print "FailQuery";
+                print "FailQueryOrDuplicate";
             } else
             {
                 if (mysqli_affected_rows($connect) > 0)
