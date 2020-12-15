@@ -231,7 +231,7 @@ function saveQuestion(qNum)
 
 function displayButtons(qNum)
 {
-    document.getElementBtId("buttonList").innerHTML="";
+    document.getElementById("buttonList").innerHTML="";
     var prevBtn = document.createElement("button");
     prevBtn.setAttribute("id","prevBtn");
     prevBtn.setAttribute("onclick","prevQuestion();");
