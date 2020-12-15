@@ -401,6 +401,7 @@ function submitWork()
                 break;
                 default:
                 {
+                    /*
                     var posResponse = response;
                     if (posResponse == "Added")
                     {
@@ -410,7 +411,8 @@ function submitWork()
                     {
                         alert("Seems you have attempted this test before!");
                         window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
-                    }
+                    }*/
+                    alert(response);
                 }
                 break;
         }
