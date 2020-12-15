@@ -300,7 +300,7 @@ function submitWork()
             if (studentAns[i] == 'undefined')
                 properlyFilled = false;
             else if (studentAns[i] == "")
-                properFilled = false;
+                properlyFilled = false;
             if (!properFilled)
                 break;
         }
