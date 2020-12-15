@@ -336,6 +336,7 @@ function submitWork()
             //one question
             //fetch the mark of this question
             var thisQuestionScore = marksAvailable[j]
+            alert(thisQuestionScore);
             switch (questionType[j])
             {
                 case "MCQ":    
@@ -376,15 +377,16 @@ function submitWork()
         var submitDate = new Date();
         var submitDateStr = submitDate.getFullYear()+"-"+(submitDate.getMonth()+1)+"-"+(submitDate.getDate()+1)
         +" "+(submitDate.getHours())+":"+(submitDate.getMinutes())+":"+(submitDate.getSeconds());
-        
+        /*
         alert(exam_name);
         alert(userid);
         alert(submitDateStr);
         alert(backupQuestionTxt);
         alert(JSONstdAnswer);
+        alert(marking);
         alert(JSONmarking);
         alert(totalMarks);
-
+        */
         /*
         //send stdAnswer, studentid, time of submit, backup...(original text), marking and totalmarks
         //do an SQL query to get the questions
