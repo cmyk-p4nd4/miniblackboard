@@ -378,12 +378,12 @@ function submitWork()
         var JSONstdAnswer = JSON.stringify(studentAns);
         var JSONmarking = JSON.stringify(marking);
         
-        
+
         //generate the submittion date
         var submitDate = new Date();
         var submitDateStr = submitDate.getFullYear()+"-"+(submitDate.getMonth()+1)+"-"+(submitDate.getDate()+1)
         +" "+(submitDate.getHours())+":"+(submitDate.getMinutes())+":"+(submitDate.getSeconds());
-        /*
+        
         alert(exam_name);
         alert(userid);
         alert(submitDateStr);
@@ -392,8 +392,8 @@ function submitWork()
         alert(marking);
         alert(JSONmarking);
         alert(totalMarks);
-        */
-        /*
+        
+        
         //send stdAnswer, studentid, time of submit, backup...(original text), marking and totalmarks
         //do an SQL query to get the questions
         var requestQuestion = new XMLHttpRequest();
@@ -420,7 +420,7 @@ function submitWork()
                 {
                     
                     var posResponse = response;
-                    /*if (posResponse == "Added")
+                    if (posResponse == "Added")
                     {
                         alert("Submit successful!");
                         window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
@@ -438,7 +438,7 @@ function submitWork()
         alert(exam_name);
         requestQuestion.send("exam_name="+exam_name+"&userid="+userid+"&submit_time="+submitDateStr+
         "&questionanswers="+backupQuestionTxt+"&student_answer="+JSONstdAnswer+"&marking="+JSONmarking+
-        "&totalmarks="+totalMarks);*/
+        "&totalmarks="+totalMarks);
     }
 
 }
