@@ -37,7 +37,7 @@ function onCourseClicked(starttime,duration,examid)
     //set duration date object
     var deadline = new Date();
     deadline.setTime(startTime.getTime() + durationSec);
-    
+    var deadlineStr = deadline.toUTCString();
     
     var isdebug = true;
     var canStart = true;
@@ -64,10 +64,10 @@ function onCourseClicked(starttime,duration,examid)
         //set cookie
         var expireTime = new Date();
         expireTime.setTime(expireTime.getTime()+36000*1000);
-        
+
         var expireString = "expires="+expireTime.toUTCString();
         document.cookie = "start_time = "+startTimeUTC+";"
-        +"deadline = "+deadline.toUTCString()+";"+expireString+";path=/";
+        +"deadline = "+deadlineStr+";"+expireString+";path=/";
         alert(document.cookie);
         window.location.href = "https://web-miniblackboard.herokuapp.com/student_module/take_exam.php";
 
