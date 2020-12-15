@@ -86,7 +86,7 @@
 
     function removeUser() {
         global $conn;
-        $cid = trim($_POST["cid"]);
+        $cid = $_POST["cid"];
 
         $stmt = $conn->prepare("DELETE FROM permission WHERE userid = ?");
         $stmt->bind_param("i", $cid);
@@ -168,7 +168,7 @@
         $subject = $_POST["datas"][0];
         $student = $_POST["datas"][1];
         $stmt = $conn->prepare("DELETE from student_course where courseid = ? AND studentid = ?");
-        $stmt->bind_param("ii", $subject, $student);
+        $stmt->bind_param("ii", $subject, $student[0]);
         $stmt->execute();
         $stmt->close();
         $conn->close();
