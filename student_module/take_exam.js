@@ -352,7 +352,7 @@ function submitWork()
                         if (correctAnsArray[t] == 1)
                             correctAnsPos = t;
                     }
-                    if (studentAns[j] == AnsArray[t])
+                    if (studentAns[j] == AnsArray[correctAnsPos])
                     {
                         totalMarks += thisQuestionScore;
                         marking[j] = thisQuestionScore;
@@ -372,7 +372,7 @@ function submitWork()
                 break;
             }
         }
-        //alert(marking);
+        alert(marking);
 
         //encode student's answers and marking
         var JSONstdAnswer = JSON.stringify(studentAns);
