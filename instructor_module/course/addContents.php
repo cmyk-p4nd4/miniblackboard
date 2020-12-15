@@ -10,6 +10,7 @@
     <?php
         session_start();
         $courseCode = $_POST['currentCourse'];
+        print "alert(".$courseCode.");"; //debug
         print "<form id='returnForm' name='returnForm' action='courseContents.php' method='post'>";
         print "<p align='right'>Your instructor ID: ".$_COOKIE['userid']."<br>";
         print "<input type='submit' value='Return to course contents'></p>";
