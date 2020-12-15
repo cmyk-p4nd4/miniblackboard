@@ -39,21 +39,25 @@ function onCourseClicked(starttime,duration,examid)
     deadline.setTime(startTime.getTime() + durationSec);
     
     
-
+    var isdebug = true;
     var canStart = true;
     //check if the time is correct.
-    var currentTime = new Date();
-    if (currentTime < startTime)
+    if (!isDebug)
     {
-        canStart = false;
-        alert("The exam has not started!");
-    }
+        var currentTime = new Date();
+        if (currentTime < startTime)
+        {
+            canStart = false;
+            alert("The exam has not started!");
+        }
 
-    if (currentTime > deadline)
-    {
-        canStart = false;
-        alert("The exam has been ended!");
+        if (currentTime > deadline)
+        {
+            canStart = false;
+            alert("The exam has been ended!");
+        }
     }
+    
 
     if (canStart)
     {
