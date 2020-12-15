@@ -31,13 +31,11 @@
     $result = $conn->query($query);
     if (!$result)
     {
-        printReturnForm();
         die("Unable to get the course information from the server.");
     }
 
     if (mysqli_num_rows($result)<0)
     {
-        printReturnForm();
         die("Cannot the course ".$coursePrefix.".");
     }
     //only one courseid will be obtained
@@ -54,7 +52,6 @@
 
     if (!$result)
     {
-        printReturnForm();
         die("Unable to get the course information from the server.");
     }
     ?>
@@ -78,7 +75,6 @@
             print "<input type='hidden' id='currentCourse' name='currentCourse' value='".$coursePrefix."'>";
             print "<input type='submit' id='addContentBtn' name='addContentBtn' value='Add contents'>";
             print "</form>";
-            printReturnForm();
             $result->close();
             $conn->close()
             ?>
