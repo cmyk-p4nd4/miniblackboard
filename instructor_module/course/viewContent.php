@@ -1,9 +1,17 @@
+<?php require_once "../../admin_module/access.php"?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>View content</title><!--Target: set to "Course Contents for XXX12345"-->
-	<link rel="stylesheet" type="text/css" href="courseContents.css"/>
-    <script src="viewContent.js"></script>
+        <title>Welcome, <?php echo $welcomeMsg; ?> - MiniBlackboard</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Custom Style+JS -->
+        <link rel="stylesheet" type="text/css" href="courseContents.css"/>
+        <script src="viewContent.js"></script>
 </head>
 <body>
     <?php
@@ -17,10 +25,7 @@
         session_start();
         //retrieve all related 
         $contentid = $_POST["contentID"];
-        print "<p align='right'>Your instructor ID: ".$_COOKIE['userid']."<br>".
-        "<button id='logoutBtn' name='logoutBtn' onclick=''>Log Out</button>".
-        "<button id='detailsBtn name='detailsBtn' onclick=''>My details</button>".
-        "</p>";
+        require_once "../inst-navbar.php";
 
         $server = "us-cdbr-east-02.cleardb.com";
 	    $user = "b06abb5474de88";
@@ -76,8 +81,6 @@
             printReturnForm();
             die("Cannot acquire course record from the database.");
         }
-
-        print "<p align='center'>Viewing the content of ".$course_prefix."</p>";
 
         //course_prefix is acquired, get exam details with contentid 
         $query = "SELECT * FROM exams WHERE examid = '".$contentid."';";
@@ -137,7 +140,7 @@
             print "</form>";
 
             //There is student attempted, show the performance button
-            print "<form id='viewPerformanceForm' name='viewPerformanceForm' action='viewContent.php' method='post'>";
+            print "<form id='viewPerformanceForm' name='viewPerformanceForm' action='../exam/checkStatistics.php' method='post'>";
             print "<input type='hidden' id='refExamID' name='refExamID' value='".$contentid."'>";
             print "<input type='hidden' id='refExamPrefix' name='refExamPrefix' value='".$course_prefix."'>";
             print "<input type='submit' id='viewPerformance_submit' name='viewPerformance_submit' value='View performance of students'>";
