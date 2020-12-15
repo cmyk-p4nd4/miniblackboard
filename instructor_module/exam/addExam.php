@@ -12,6 +12,7 @@
 
     <h1 align="center">Register an exam</h1>
     <?php
+	//courseInput
         print "<p>";
         print "Your instructor id is: ".$_COOKIE['userid']."<br>";
         print "You are adding an exam for course ".$_POST['courseID']."<br>";
