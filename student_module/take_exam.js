@@ -32,8 +32,6 @@ function loadExam()
     exam_name = existingCookies['exam_name'];
     userName = existingCookies['alias'];
 
-    
-    
     //display all Basic information
     var aliasDisp = document.createElement("p");
     aliasDisp.setAttribute("id","aliasDisp");
