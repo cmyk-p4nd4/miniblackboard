@@ -21,7 +21,7 @@
         
         //retrieve exam id 
         $query = "SELECT DISTINCT examid FROM exams where exam_name='".$exam_name."'";
-        $result = mysqli_query($connect,$result);
+        $result = mysqli_query($connect,$query);
 
         if (!$result)
         {
@@ -35,7 +35,7 @@
             $query = "INSERT INTO exam_records (examid,studentid,submit_time,questionanswers,student_answer,marking,totalmarks) VALUES ".
             "('".$exam_id."','".$userid."','".$submitTime."','".$questionAnswers."','".$student_answer."','".$marking."','".$totalmarks."');";
             print($query);
-            /*$result = mysqli_query($connect,$result);
+            $result = mysqli_query($connect,$query);
 
             if (!$result)
             {
