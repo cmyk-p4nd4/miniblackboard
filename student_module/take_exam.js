@@ -409,7 +409,7 @@ function submitWork()
                 case "FailQueryOrDuplicate":
                 {
                     alert("You have already submitted once!");
-                    window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
+                    window.location.replace("https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php");
                 }
                 break;
                 default:
@@ -419,11 +419,11 @@ function submitWork()
                     if (posResponse == "Added")
                     {
                         alert("Submit successful!");
-                        window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
+                        window.location.replace("https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php");
                     } else if (posResponse == "NoEffects")
                     {
                         alert("Seems you have attempted this test before!");
-                        window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
+                        window.location.replace=("https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php");
                     }
                     
                 }
