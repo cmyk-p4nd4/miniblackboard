@@ -121,7 +121,7 @@ function loadExam()
 
                 //display the first question
                 displayQuestion(currentQNum);
-                displayButtons(qNum);
+                displayButtons(currentQNum);
             }
             break;
         }
