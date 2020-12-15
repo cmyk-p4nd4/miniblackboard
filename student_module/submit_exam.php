@@ -5,7 +5,7 @@
     $db = "heroku_2d30a0192d19383";
     $connect = mysqli_connect($server,$user,$pw,$db);
 
-    if !($connect)
+    if (!$connect)
     {
         print "FailConnection";
     } else
@@ -18,9 +18,7 @@
         $student_answer = $_POST['student_answer'];
         $marking = $_POST['marking'];
         $totalmarks = $_POST['totalmarks'];
-        print "FailQuery";
-    }
-/*
+        
         //retrieve exam id 
         $query = "SELECT DISTINCT examid FROM exams where exam_name='".$exam_name."'";
         $result = mysqli_query($connect,$result);
@@ -56,9 +54,12 @@
             
         }
         
+    }
+
+        
 
     
 
     
-*/
+
 ?>
