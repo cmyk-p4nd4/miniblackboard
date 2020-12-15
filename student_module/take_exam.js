@@ -165,6 +165,7 @@ function displayQuestion(qNum)
                 radioParagraph.appendChild(answerRadio);
                 var answerLabel = document.createElement("label");
                 answerLabel.setAttribute("for","answer"+i);
+                answerLabel.innerHTML = thisAnswers[i];
                 radioParagraph.appendChild(answerLabel);
                 document.getElementById("questionDiv").appendChild(radioParagraph);
             }
