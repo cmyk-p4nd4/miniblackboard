@@ -14,6 +14,20 @@ var correctAnswers = [];
 var marksAvailable = [];
 var currentQNum = 0;
 
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
 function loadExam()
 {
     //retrieve the cookies first
@@ -23,14 +37,14 @@ function loadExam()
     var existingCookies = document.cookie;
     alert(existingCookies);
     //existingCookies = decodeURIComponent(existingCookies);
-    existingCookies = existingCookies.split(";");
+    existingCookies = existingCookies.split("; ");
 
     
-    userid = existingCookies['userid'];
-    deadline = existingCookies['deadline'];
-    startTime = existingCookies['start_time'];
-    exam_name = existingCookies['exam_name'];
-    userName = existingCookies['alias'];
+    userid = getCookie('userid');
+    deadline = getCookie('deadline');
+    startTime = getCookie("start_time");
+    exam_name = getCookie("exam_name");
+    userName = getCookie("alias");
 
     //display all Basic information
     var aliasDisp = document.createElement("p");
@@ -75,13 +89,13 @@ function loadExam()
             case "FailConnection":
             {
                 alert("Fail to connect with server!");
-                window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
+                window.href.location="/wrap/std-courseDisplay.php";
             }
             break;
             case "FailQuery":
             {
                 alert("Fail to acquire questions!");
-                window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
+                window.href.location="/wrap/std-courseDisplay.php";
             }
             break;
             default:
