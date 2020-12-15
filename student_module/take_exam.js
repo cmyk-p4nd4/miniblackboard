@@ -50,7 +50,7 @@ function loadExam()
     //display all Basic information
     var aliasDisp = document.createElement("p");
     aliasDisp.setAttribute("id","aliasDisp");
-    userName = userName.replace("%20"," ");
+    
     aliasDisp.innerHTML = "Your name: "+userName;
     document.getElementById("basicInfo").appendChild(aliasDisp);
 
