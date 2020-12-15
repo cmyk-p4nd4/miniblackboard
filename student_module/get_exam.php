@@ -14,7 +14,7 @@
         die();
     }
 
-    $query = "SELECT DISTINCT questions FROM exams WHERE exam_name='".$exam_name."';";
+    $query = "SELECT questions FROM exams WHERE exam_name='".$exam_name."';";
     $result = mysqli_query($connect,$query);
 
     if (!$result)
