@@ -51,7 +51,7 @@
         $correct_ans = [];
         foreach ($temp_ans as $key => $value) {
             if (is_array($value)) {
-                array_push($correct_ans, 'Choice '.array_search(1,$value));
+                array_push($correct_ans, 'Choice '.(array_search(1,$value)+1));
             } else {
                 array_push($correct_ans, $value);
             }

@@ -17,7 +17,6 @@
         <link href="../assets/main-navbar-ui.css" rel="stylesheet">
     </head>
     <body>
-        
         <?php 
             if (isset($_COOKIE["ARM_GPIO"])) {
                 header("location: admin-dashboard.php");
@@ -30,6 +29,7 @@
                     require_once "../instructor_module/course/courseMenu.php";
                 } else {
                     require_once "../student_module/courseMenu.php";
+                    require_once "../student_module/checkStatistics.php";
                 }
             }
         ?>

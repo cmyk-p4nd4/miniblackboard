@@ -8,9 +8,11 @@
             <li class="nav-item active">
                 <a class="nav-link nav-item" href="#course-list" data-toggle="tab" role="tab" aria-selected="TRUE">Course</a>
             </li>
+            <?php if ($_COOKIE['permission'] == 'S') {?>
             <li class="nav-item active">
-                <a class="nav-link" href="#">Grade</a>
+                <a class="nav-link nav-item" href="#grade-list" data-toggle="tab" role="tab" aria-selected="FALSE">Grade</a>
             </li>
+            <?php }?>
             <li class="nav-item active">
                 <a class="nav-link" href="#"></a>
             </li>

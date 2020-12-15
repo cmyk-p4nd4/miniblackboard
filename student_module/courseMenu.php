@@ -28,9 +28,6 @@
         ?>
         </div>
     </div>
-    <div id>
-
-    </div>
     <script>
         $(function() {
             $("a[id*='courseBtn']").each(function() {
