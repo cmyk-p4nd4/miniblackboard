@@ -10,7 +10,8 @@
 
     if !($connect)
     {
-        die("FailConnection");
+        print "FailConnection";
+        die();
     }
 
     $query = "SELECT DISTINCT questions FROM exams WHERE exam_name='".$exam_name."';";
@@ -18,12 +19,17 @@
 
     if (!$result)
     {
-        die("FailQuery");
+        print "FailQuery";
+        die();
     }
 
     //suppose only one row
-    $row = mysqli_fetch_assoc($result);
-    print $row['questions'];
+    if (mysqli_num_rows($result) > 0)
+    {
+        $row = mysqli_fetch_assoc($result);
+        print $row['questions'];
+    }
+    
 
 
 ?>

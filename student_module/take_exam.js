@@ -40,6 +40,7 @@ function loadExam()
     
     
     userid = getCookie('userid');
+    alert(userid);
     deadline = getCookie('deadline');
     startTime = getCookie("start_time");
     exam_name = getCookie("exam_name");
