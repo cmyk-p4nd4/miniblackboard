@@ -26,7 +26,7 @@
                 <div class="tab-content">
                 <?php
                 if ($_COOKIE["permission"] == 'T') {
-                    require_once "../instructor_module/course/courseContents.php";
+                    require_once "../instructor_module/course/courseMenu.php";
                 } else {
                     require_once "../student_module/courseMenu.php";
                     require_once "../student_module/checkStatistics.php";
