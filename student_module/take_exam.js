@@ -22,7 +22,7 @@ function loadExam()
 
     var existingCookies = document.cookie;
     alert(existingCookies);
-    existingCookies = decodeURIComponent(existingCookies);
+    //existingCookies = decodeURIComponent(existingCookies);
     existingCookies = existingCookies.split(";");
 
     

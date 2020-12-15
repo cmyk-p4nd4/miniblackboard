@@ -64,8 +64,9 @@ function onCourseClicked(starttime,duration,examid)
         //set cookie
         var expireTime = new Date();
         expireTime.setTime(expireTime.getTime()+36000*1000);
+        
         var expireString = "expires="+expireTime.toUTCString();
-        document.cookie = "exam_name = "+examid+";"+"start_time = "+startTimeUTC+";"
+        document.cookie = "start_time = "+startTimeUTC+";"
         +"deadline = "+deadline.toUTCString()+";"+expireString+";path=/";
         alert(document.cookie);
         window.location.href = "https://web-miniblackboard.herokuapp.com/student_module/take_exam.php";
