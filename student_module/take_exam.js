@@ -104,16 +104,14 @@ function loadExam()
             default:
             {
                 originalQuestionTxt = response;
-
                  //suppose all failure response has been redirected.
                 backupQuestionTxt = originalQuestionTxt;
-                alert(originalQuestionTxt);
                 originalQuestionTxt = JSON.parse(originalQuestionTxt);
                 questions = JSON.parse(originalQuestionTxt[0]);
+                alert(originalQuestionTxt[1]);
                 questionType = JSON.parse(originalQuestionTxt[1]);
                 answers = JSON.parse(originalQuestionTxt[2]);
                 correctAnswers = JSON.parse(originalQuestionTxt[3]);
-                alert(originalQuestionTxt[4]);
                 marksAvailable = JSON.parse(originalQuestionTxt[4]);
 
                 var questionCntDisp = document.createElement("p");
