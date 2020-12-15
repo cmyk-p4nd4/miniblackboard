@@ -43,14 +43,14 @@
             } else
             {
                 if (mysqli_affected_rows($connect) > 0)
-            {
-                print "Added";
-            }
+                {
+                    print "Added";
+                }
             else
             {
                 print "NoEffects";
             }   
-            }*/
+            }
 
             
         }
