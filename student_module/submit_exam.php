@@ -13,6 +13,7 @@
     $exam_name = $_POST['exam_name'];
     $userid = $_POST['userid'];
     $submitTime = $_POST['submit_time'];
+
     $questionAnswers = $_POST['questionanswers'];
     $student_answer = $_POST['student_answer'];
     $marking = $_POST['marking'];
@@ -24,28 +25,35 @@
 
     if (!$result)
     {
-        die("FailQuery");
-    }
-
-    $row = mysqli_fetch_assoc($result);
-    $exam_id = $row['examid'];
-
-    $query = "INSERT INTO exam_records (`examid`,`studentid`,`submit_time`,`questionanswers`,`student_answer`,`marking`,`totalmarks`) VALUES ".
-    "('".$exam_id."','".$userid."','".$submitTime."','".$questionAnswers."','".$student_answer."','".$marking."','".$totalmarks."');";
-    $result = mysqli_query($connect,$result);
-
-    if (!$result)
+        print "FailQuery";
+        
+    } else
     {
-        die("FailQuery");
+        $row = mysqli_fetch_assoc($result);
+        $exam_id = $row['examid'];
+
+        $query = "INSERT INTO exam_records (`examid`,`studentid`,`submit_time`,`questionanswers`,`student_answer`,`marking`,`totalmarks`) VALUES ".
+        "('".$exam_id."','".$userid."','".$submitTime."','".$questionAnswers."','".$student_answer."','".$marking."','".$totalmarks."');";
+        $result = mysqli_query($connect,$result);
+
+        if (!$result)
+        {
+            print "FailQuery";
+        } else
+        {
+            if (mysqli_affected_rows($connect) > 0)
+        {
+            print "Added";
+        }
+        else
+        {
+            print "NoEffects";
+        }   
+        }
+
+        
     }
 
-    if (mysqli_affected_rows($connect) > 0)
-    {
-        print "Added";
-    }
-    else
-    {
-        print "NoEffects";
-    }
+    
 
 ?>
