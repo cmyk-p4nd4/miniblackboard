@@ -20,7 +20,7 @@
 	<form id="inputForm" method="post" action="finishExamRegister.php">
 	<p>
 	<?php
-	print "<p>Your instructor id: ".$_SESSION['userid']."</p>";
+	print "<p>Your instructor id: ".$_COOKIE['userid']."</p>";
 	print "<p>Course id: ".$_POST['currentCourse']."</p>"."<input type='hidden' id='currentCourse' name='currentCourse' value='".$_POST['currentCourse']."'>";
 	print "Current exam information<br><br>";
 	print "Name of exam: ". $_SESSION["examName"]."<br>";
