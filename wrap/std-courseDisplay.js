@@ -40,7 +40,7 @@ function onCourseClicked(exam_name,starttime,duration,examid)
     deadline.setTime(startTime.getTime() + durationSec);
     var deadlineStr = deadline.toUTCString();
     
-    var isdebug = false;
+    var isdebug = true;
     var canStart = true;
     //check if the time is correct.
     if (!isdebug)
