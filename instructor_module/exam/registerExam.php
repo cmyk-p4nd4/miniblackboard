@@ -15,6 +15,12 @@
 		$_SESSION["examTime"] = $_POST["examTime"];
 		$_SESSION["examDurationHours"] = $_POST["examDurationHrs"];
 		$_SESSION["examDurationMinutes"] = $_POST["examDurationMinutes"];
+
+		print $_SESSION["examName"];
+		print $_SESSION["examDate"];
+		print $_SESSION["examTime"];
+		print $_SESSION["examDurationHours"];
+		print $_SESSION["examDurationMinutes"];
 ?>
 	<h1 align="center">Register an exam</h1>
 	<form id="inputForm" method="post" action="finishExamRegister.php">
