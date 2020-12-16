@@ -384,57 +384,61 @@ function submitWork()
         var submitDateStr = submitDate.getFullYear()+"-"+(submitDate.getMonth()+1)+"-"+(submitDate.getDate()+1)
         +" "+(submitDate.getHours())+":"+(submitDate.getMinutes())+":"+(submitDate.getSeconds());
         
-        //send stdAnswer, studentid, time of submit, backup...(original text), marking and totalmarks
-        //do an SQL query to get the questions
-        var requestQuestion = new XMLHttpRequest();
-        requestQuestion.open("POST","submit_exam.php");
-        requestQuestion.setRequestHeader('content-type','application/x-www-form-urlencoded; charset=UTF-8');
-        requestQuestion.onload=function()
+        if (confirm("Confirm to submit your answer?"))
         {
-            var response = requestQuestion.responseText;
-            switch (response)
+            //send stdAnswer, studentid, time of submit, backup...(original text), marking and totalmarks
+            //do an SQL query to get the questions
+            var requestQuestion = new XMLHttpRequest();
+            requestQuestion.open("POST","submit_exam.php");
+            requestQuestion.setRequestHeader('content-type','application/x-www-form-urlencoded; charset=UTF-8');
+            requestQuestion.onload=function()
             {
-                case "FailConnection":
+                var response = requestQuestion.responseText;
+                switch (response)
                 {
-                    alert("Fail to connect with server!");
-                    //window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
-                }
-                break;
-                case "FailQuery":
-                {
-                    alert("Fail to insert your record!");
-                    //window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
-                }
-                break;
-                case "FailQueryOrDuplicate":
-                {
-                    alert("You have already submitted once!");
-                    window.location.replace("https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php");
-                }
-                break;
-                default:
-                {
-                    
-                    var posResponse = response;
-                    if (posResponse == "Added")
+                    case "FailConnection":
                     {
-                        alert("Submit successful!");
-                        window.location.replace("https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php");
-                    } else if (posResponse == "NoEffects")
-                    {
-                        alert("Seems you have attempted this test before!");
-                        window.location.replace=("https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php");
+                        alert("Fail to connect with server!");
+                        //window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
                     }
-                    
-                }
-                break;
+                    break;
+                    case "FailQuery":
+                    {
+                        alert("Fail to insert your record!");
+                        //window.href.location="https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php";
+                    }
+                    break;
+                    case "FailQueryOrDuplicate":
+                    {
+                        alert("You have already submitted once!");
+                        window.location.replace("https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php");
+                    }
+                    break;
+                    default:
+                    {
+                        
+                        var posResponse = response;
+                        if (posResponse == "Added")
+                        {
+                            alert("Submit successful!");
+                            window.location.replace("https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php");
+                        } else if (posResponse == "NoEffects")
+                        {
+                            alert("Seems you have attempted this test before!");
+                            window.location.replace=("https://web-miniblackboard.herokuapp.com/wrap/std-courseDisplay.php");
+                        }
+                        
+                    }
+                    break;
+            }
+            };
+            //
+            
+            requestQuestion.send("exam_name="+exam_name+"&userid="+userid+"&submit_time="+submitDateStr+
+            "&questionanswers="+backupQuestionTxt+"&student_answer="+JSONstdAnswer+"&marking="+JSONmarking+
+            "&totalmarks="+totalMarks);
         }
-        };
-        //
         
-        requestQuestion.send("exam_name="+exam_name+"&userid="+userid+"&submit_time="+submitDateStr+
-        "&questionanswers="+backupQuestionTxt+"&student_answer="+JSONstdAnswer+"&marking="+JSONmarking+
-        "&totalmarks="+totalMarks);
     }
 
 }
